@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+
+<div class="container">
+	<div class="row">
+	{% for lesson in b %}
+		<div class="col-md-6 col-md-offset-3">
+			<div class="thumbnail">
+				<div class="caption">	
+					<p>  
+						<a href="{{ lesson.get_absolute_url }}">{{lesson.headline}}</a>
+					</p>
+				</div>
+			</div>
+			
+		</div>
+	{%  endfor  %}
+	</div>
+
+	
+	
+	</div>
+
+{% endblock %}

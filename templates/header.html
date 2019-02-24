@@ -1,0 +1,48 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+
+            <!-- Telefon ekranları için menü butonu -->
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- İsim Soyisim veya Marka İsmi -->
+            <a href="{% url 'home' %}" class="navbar-brand">PYTHON</a>
+        </div>
+
+        <nav class="collapse navbar-collapse" role="navigation">
+
+            <!-- Arama Çubuğu -->
+            <form class="navbar-form navbar-left" role="search" method="GET" action="">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" placeholder="Search on lessons" value="{{request.GET.q}}" >
+                    <span class="input-group-btn">
+                        <input class="btn btn-default" type="submit" value="Ara">
+                    </span>
+                </div>
+            </form>
+
+            <!-- Temel Sayfalar -->
+            <ul class="nav navbar-nav navbar-right">
+			
+				<li><a href="{% url 'tur:index' %}">Modüller</a></li>
+                <li><a href="{% url 'lessons:index' %}">EN</a></li>
+				<li><a href="{% url 'tur:index' %}">TR</a></li>
+				{% if request.user.is_authenticated %}
+					<!--<li><a href="{% url 'lessons:create' %}">Add Lesson</a></li> -->
+					<li><a href="{% url 'tur:create' %}">Ders Ekle</a></li>
+				{% endif %}
+				
+
+			</ul>
+
+        </nav>
+
+    </div>
+</nav>
