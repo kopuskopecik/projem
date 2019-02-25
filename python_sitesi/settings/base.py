@@ -26,7 +26,7 @@ SECRET_KEY = 'y5s(@x(xo@hi#s#7pg638s48!2k%^^s*nqx225p%0$!s+fxlcn'
 DEBUG = True
 
 #ALLOWED_HOSTS = ["pythonailesi.pythonanywhere.com"]
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["pythonailesi.pythonanywhere.com"]
 
 # Application definition
 
