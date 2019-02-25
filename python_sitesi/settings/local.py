@@ -1,3 +1,3 @@
-from project.settings.base import *
+from python_sitesş.settings.base import *
 
 ALLOWED_HOSTS = []
