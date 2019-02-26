@@ -3,24 +3,21 @@
 {% block body %}
 <div class="container-fluid">
 	<div class="row">
-		<div class = "col-md-2 col-sm-3 col-xs-12 {{lesson.filtre1}}">
-		{% for ders in lessons   %}	
+		<div class = "col-md-2 col-sm-3 col-xs-12 detailmenu">
+		{% for ders in lessons   %}
 		<a class="index" href="{{ders.get_absolute_url}}">
-		<h4 class="baslik {% if ders.slug == lesson.slug  %} tik {% endif %}" ><b>{{ders.headline}}</b></h4>
+		<h4 class="baslik {% if ders.slug == lesson.slug  %} tik {% endif %}" ><b>{{ders.headline}}</b>
+		</h4>
 		</a> 
 				
 		{%  endfor  %}
 		</div>
 		<div class="col-md-10 col-sm-9 col-xs-12 content">
-
-		
-
-			
-			<div class="thumbnail">
-							
+			<div class="thumbnail">			
 				<div class = "oklar">
-					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-xs btn-success" role="button"><</a>
-					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-xs btn-success ikinci" role="button">></a>
+					<a class="btn btn-xs btn-danger menu menu1" role="button">O</a>
+					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-xs btn-success menu" role="button"><</a>
+					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-xs btn-success btn-center ikinci menu" role="button">></a>
 		
 				</div>
 					<h3 class ="text-center"> 

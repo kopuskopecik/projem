@@ -2,24 +2,28 @@
 	margin-bottom:0;
 }
 
-
 body {
-	background-color: #eaaaaa;
-	padding-top:50px;
+	background-color: #bb2b2b;
+	padding-top:60px;
 	font-family: 'Roboto', 'Arial';
 	color: #101010;
 }
 
 .basliklar {
 	margin-top: 20px;
-	border: solid;
 	background-color: #101010;
-	color: #fff;
+	color: white;
+	padding: 10px;
+	border-radius: 50%;
 }
 
 .col-lg-2,.col-md-2, .col-sm-3{
 	padding-left: 8px;
 } 
+
+.detailmenu {
+	background-color: #101010;
+}
 
 .abc {
 	margin-bottom: 10px;
@@ -114,161 +118,35 @@ th {
 }
 
 .ikinci {
-	float:right;
+	float: right;
 }
 
 @media (max-width: 767px) {
 
-.index{
+.detailmenu{
 	display:none;
 }
 
+
 }
 
-.bir {
-	background-color: #350404;
+@media (min-width: 767px) {
+
+.solmenu{
+	display: none;
 }
 
-.iki {
-    background-color: #010423;
-}
 
-.üç {
-	background-color: #032301;
-}
-
-.dört {
-    background-color: #29022b;
-}
-
-.beş {
-    background-color: #03383e;
-}
-
-.altı {
-    background-color: #980f8e;
-}
-
-.yedi {
-    background-color: #0e0c0a80;
-}
-
-.sekiz {
-    background-color: #337ab7;
-}
-
-.dokuz {
-    background-color: #8a6d3b;
-}
-
-.on {
-    background-color: #52500a;
-}
-
-.onbir {
-    background-color: #1a6358;
-}
-
-.oniki {
-    background-color: #8bc34a;
-}
-
-.onüç {
-    background-color: #ff5722;
-}
-
-.ondört {
-    background-color: #e91e63;
-}
-
-.onbeş {
-    background-color: #00bcd4;
-}
-
-.onaltı {
-    background-color: #795548;
-}
-
-.onyedi {
-    background-color: #9e9e9e;
-}
-
-.onsekiz {
-    background-color: #673ab7;
-}
-
-.ondokuz {
-    background-color: #f44336;
-}
-
-.yirmi {
-    background-color: #e91e63;
-}
-
-.yirmibir {
-    background-color: #9c27b0;
-}
-
-.yirmiki {
-    background-color: #673ab7;
-}
-
-.yirmiüç {
-    background-color: #3f51b5;
-}
-
-.yirmidört {
-    background-color: #607d8b;
-}
-
-.yirmibeş {
-    background-color: #933112;
-}
-
-.yirmialtı {
-    background-color: #494e51;
-}
-
-.yirmiyedi {
-    background-color: #847c37;
-}
-
-.yirmisekiz {
-    background-color: #ad4220;
-}
-
-.yirmidokuz {
-    background-color: #6f781a;
-}
-
-.otuz {
-    background-color: #237984;
-}
-
-.otuzbir {
-    background-color: #6051f1;
-}
-
-.otuziki {
-    background-color: #34351a;
-}
-
-.otuzüç {
-    background-color: #a9701e;
-}
-
-.otuzdört {
-    background-color: #a9701e;
-}
-
-.otuzbeş {
-    background-color: black;
 }
 
 .badge {
-	background-color: #261DD7;
+	background-color: #bb2b2b;
 }
 table {
 	table-layout: fixed;
 	width: auto;
+}
+
+.navbar-height {
+	100px;
 }

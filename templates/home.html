@@ -12,7 +12,12 @@
 	
 	<div class = "col-md-6 col-sm-12 col-xs-12">
 		<div class = "basliklar {{lesson.filtre1}} {{lesson.filtre2}}">
-			<a href="{{lesson.get_absolute_url}}"><h4 class = " abc text-center"><span class = " text-center badge">{{forloop.counter}}</span> {{lesson.headline}}</h4></a>
+			<a href="{{lesson.get_absolute_url}}">
+				<h3 class = " abc text-center">
+					<span class = " text-center badge">{{forloop.counter}}</span>
+				{{lesson.headline}}
+				</h3>
+			</a>
 		</div>		
 	</div>
 	{%  endfor  %}

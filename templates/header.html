@@ -13,7 +13,7 @@
             </button>
 
             <!-- İsim Soyisim veya Marka İsmi -->
-            <a href="{% url 'home' %}" class="navbar-brand">PYTHON</a>
+            <a href="{% url 'home' %}" class="navbar-brand"><b>PYTHON</b></a>
         </div>
 
         <nav class="collapse navbar-collapse" role="navigation">
@@ -31,15 +31,13 @@
             <!-- Temel Sayfalar -->
             <ul class="nav navbar-nav navbar-right">
 			
-				<li><a href="{% url 'tur:index' %}">Modüller</a></li>
-                <li><a href="{% url 'lessons:index' %}">EN</a></li>
-				<li><a href="{% url 'tur:index' %}">TR</a></li>
+				<li><a href="{% url 'tur:index' %}"><b>Modüller</b></a></li>
+                <li><a href="{% url 'lessons:index' %}"><b>EN</b></a></li>
+				<li><a href="{% url 'tur:index' %}"><b>TR</b></a></li>
 				{% if request.user.is_authenticated %}
 					<!--<li><a href="{% url 'lessons:create' %}">Add Lesson</a></li> -->
-					<li><a href="{% url 'tur:create' %}">Ders Ekle</a></li>
+					<li><a href="{% url 'tur:create' %}"><b>Ders Ekle</b></a></li>
 				{% endif %}
-				
-
 			</ul>
 
         </nav>
