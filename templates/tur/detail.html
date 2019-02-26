@@ -15,9 +15,9 @@
 		<div class="col-md-10 col-sm-9 col-xs-12 content">
 			<div class="thumbnail">			
 				<div class = "oklar">
-					<a class="btn btn-xs btn-danger menu menu1" role="button">O</a>
-					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-xs btn-success menu" role="button"><</a>
-					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-xs btn-success btn-center ikinci menu" role="button">></a>
+					<a class="btn btn-warning menu menu1" role="button"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></a>
+					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-success menu" role="button"><</a>
+					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-success btn-center ikinci menu" role="button">></a>
 		
 				</div>
 					<h3 class ="text-center"> 
@@ -33,8 +33,8 @@
 					{{lesson.content|safe}}
 				
 				<div class = "oklar">
-					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-xs btn-success" role="button"><</a>
-					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-xs btn-success ikinci" role="button">></a>
+					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><</a>
+					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-success ikinci" role="button">></a>
 		
 				</div>
 						{% if request.user.is_authenticated %}
