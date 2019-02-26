@@ -16,5 +16,5 @@ tur/migrations/*
 !tur/migrations/__init__.py
 staticfiles/
 
-python_sitesi/lokal.py
+lokal.py
 
