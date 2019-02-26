@@ -139,3 +139,5 @@ CKEDITOR_CONFIGS = {
 		'width':'100%',
 	},
 }
+
+from .lokal import *
