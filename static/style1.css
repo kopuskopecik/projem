@@ -3,8 +3,8 @@
 }
 
 html, body {
-height: 100%;
-   margin: 0;
+	height: 100%;
+	margin: 0;
 }
 
 body {
@@ -12,7 +12,9 @@ body {
 	padding-top:60px;
 	font-family: 'Roboto', 'Arial';
 	color: #101010;
+	font-size: 16px;
 }
+
 
 .basliklar {
 	margin-top: 20px;
@@ -76,7 +78,6 @@ blockquote {
 	border-left-color: #101010;
     padding: 10px 10px;
     margin: 10px 30px;
-	font-size: 14px;
 	background-color: #1e6f57;
 	color: #fff;
 }
