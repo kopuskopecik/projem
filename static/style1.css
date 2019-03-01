@@ -2,8 +2,13 @@
 	margin-bottom:0;
 }
 
+html, body {
+height: 100%;
+   margin: 0;
+}
+
 body {
-	background-color: #bb2b2b;
+	background-color: #faebd7;
 	padding-top:60px;
 	font-family: 'Roboto', 'Arial';
 	color: #101010;
@@ -11,18 +16,30 @@ body {
 
 .basliklar {
 	margin-top: 20px;
-	background-color: #101010;
+	background-color: #9B2335;
 	color: white;
 	padding: 10px;
-	border-radius: 50%;
+	border-radius: 20px;
 }
 
 .col-lg-2,.col-md-2, .col-sm-3{
 	padding-left: 8px;
 } 
 
+
 .detailmenu {
-	background-color: #101010;
+	background-color: #9B2335;
+	overflow-y: auto;
+
+}
+
+.row{
+    overflow: hidden; 
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
 }
 
 .abc {
@@ -140,7 +157,7 @@ th {
 }
 
 .badge {
-	background-color: #bb2b2b;
+	background-color: #98DDDE;
 }
 table {
 	table-layout: fixed;
