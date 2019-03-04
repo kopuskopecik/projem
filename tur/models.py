@@ -10,6 +10,7 @@ class Dersler(models.Model):
 	slug = models.SlugField(unique=True, editable=False, max_length=130)
 	number = models.PositiveSmallIntegerField()
 	publishing_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now_add=True)
+	updating_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now=True)
 	filtre1 = models.CharField(max_length=100, default = "-")
 	filtre2 = models.CharField(max_length=100, default = "-")
 	
