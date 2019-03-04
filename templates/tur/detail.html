@@ -20,7 +20,7 @@
 					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-success btn-center ikinci menu" role="button">></a>
 		
 				</div>
-					<h3 class ="text-center"> 
+					<h3 class ="text-center detailbaslik"> 
 						 
 						<b>{{lesson.number}}-{{lesson.headline}} </b>
 						{% if request.user.is_authenticated %}
@@ -31,6 +31,8 @@
 					</h3>
 				
 					{{lesson.content|safe}}
+					
+					<p class = "text-primary text-center"><b>{{lesson.publishing_date}}</b></p>
 				
 				<div class = "oklar">
 					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><</a>

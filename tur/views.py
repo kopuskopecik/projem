@@ -8,20 +8,39 @@ from django.contrib import messages
 
 # Create your views here.
 def tur_index(request):
+
+	genel1 = Dersler.objects.filter(filtre2 = "ana1")
+	genel2 = Dersler.objects.filter(filtre2 = "ana2")
+	moduller = Dersler.objects.filter(filtre2 = "ana3")
+	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
+	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
+	
 	lessons = Dersler.objects.all()
 	lesson1 = get_object_or_404(Dersler, number=1)
 	
 	context = {
 		'lessons':lessons,
 		'lesson1':lesson1,
+		'genel1':genel1,
+		'genel2':genel2,
+		'moduller':moduller,
+		'paketler1':paketler1,
+		'paketler2':paketler2,
 	}
 	
 	return render(request, 'tur/index.html', context)
 
 def tur_detail(request, slug):
+
+	genel1 = Dersler.objects.filter(filtre2 = "ana1")
+	genel2 = Dersler.objects.filter(filtre2 = "ana2")
+	moduller = Dersler.objects.filter(filtre2 = "ana3")
+	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
+	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
+	
 	lesson = get_object_or_404(Dersler, slug=slug)
 	lessons = Dersler.objects.filter(filtre1 = lesson.filtre1)
-	other_lessons = Dersler.objects.exclude(slug = slug).filter(filtre2 = "ana").filter(number__gte = lesson.number)[0:6]
+	other_lessons = Dersler.objects.exclude(slug = slug).filter(filtre2__contains = "ana").filter(number__gte = lesson.number)[0:6]
 	if lesson== Dersler.objects.last():
 		next_lesson = get_object_or_404(Dersler, number=1)
 	else:
@@ -40,6 +59,11 @@ def tur_detail(request, slug):
 		'next_lesson': next_lesson,
 		'previous_lesson': previous_lesson,
 		'other_lessons': other_lessons,
+		'genel1':genel1,
+		'genel2':genel2,
+		'moduller':moduller,
+		'paketler1':paketler1,
+		'paketler2':paketler2,
 	}
 	return render(request,'tur/detail.html',context)
 
@@ -47,6 +71,12 @@ def tur_create(request):
 	if not request.user.is_authenticated:
 		return Http404()
 		
+	genel1 = Dersler.objects.filter(filtre2 = "ana1")
+	genel2 = Dersler.objects.filter(filtre2 = "ana2")
+	moduller = Dersler.objects.filter(filtre2 = "ana3")
+	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
+	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
+	
 	form = DerslerForm(request.POST or None)
 	if form.is_valid():
 		lesson=form.save()
@@ -55,6 +85,11 @@ def tur_create(request):
 		return redirect('tur:create')
 	context = {
 		'form':form,
+		'genel1':genel1,
+		'genel2':genel2,
+		'moduller':moduller,
+		'paketler1':paketler1,
+		'paketler2':paketler2,
 	}
 
 	return render(request, 'tur/form.html',context)
@@ -62,6 +97,12 @@ def tur_create(request):
 def tur_update(request,slug):
 	if not request.user.is_authenticated:
 		return Http404()
+		
+	genel1 = Dersler.objects.filter(filtre2 = "ana1")
+	genel2 = Dersler.objects.filter(filtre2 = "ana2")
+	moduller = Dersler.objects.filter(filtre2 = "ana3")
+	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
+	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
 		
 	lesson = get_object_or_404(Dersler, slug=slug)
 	form = DerslerForm(request.POST or None, instance=lesson)
@@ -72,6 +113,11 @@ def tur_update(request,slug):
 		
 	context = {
 		'form':form,
+		'genel1':genel1,
+		'genel2':genel2,
+		'moduller':moduller,
+		'paketler1':paketler1,
+		'paketler2':paketler2,
 	}
 	return render(request, 'tur/form.html',context)
 

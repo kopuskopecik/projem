@@ -15,6 +15,15 @@ body {
 	font-size: 16px;
 }
 
+h4, .detailbaslik {
+	font-family: 'Roboto', 'Arial';
+	color: #dc0606;
+}
+
+.index:hover {
+	color:mediumseagreen;
+}
+
 .fa-python {
   color: #9B2335;
 }
@@ -35,7 +44,6 @@ body {
 .detailmenu {
 	background-color: #9B2335;
 	overflow-y: auto;
-
 }
 
 .row{
@@ -53,7 +61,9 @@ body {
 }
 
 .index {
-	background-color: #101010;
+	text-decoration: none;
+	color: #101010;
+	margin-top: 10px;
 }
 
 .content {
@@ -100,10 +110,6 @@ tt {
 	color:#fff;
 }
 
-h5 {
-	color: darkgreen;
-	font-family: 'Roboto', 'Arial';
-}
 
 .thumbnail {
 	margin-bottom: 10px;
@@ -112,16 +118,9 @@ h5 {
 
 .baslik {
 	word-wrap: break-word;
-}
-h4, h3 {
-	font-family: 'Roboto', 'Arial';
-	color: #dc0606;
-}
-
-
-.baslik {
 	color: #fff;
 }
+
 
 .tik{
 	color: #e4e81c;

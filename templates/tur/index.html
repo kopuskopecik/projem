@@ -1,32 +1,20 @@
 {% extends 'base.html' %} 
-
+{% load static %}
 {% block body %}
 
 <div class="container-fluid">
 	<div class="row">
-		<div class = "col-md-2 col-sm-4 index">
+		<div class = "index">
 		{% for lesson in lessons   %}
 		
-		<a class="index" href="{{lesson.get_absolute_url}}"><h4> {{lesson.headline}} </h4></a>
+			<div class = "col col-md-6 col-sm-6 col-xs-12">
+			<p><a class="index {{lesson.filtre1}} {{lesson.filtre2}}" href="{{lesson.get_absolute_url}}">
+				<b>{{lesson.number}}.{{lesson.headline}}</b></a></p>
 		
+		
+			</div>
 		{%  endfor  %}
 		</div>
-		<div class="col-md-10 col-sm-4">
-			
-			
-			<div class="thumbnail">
-				<div class="caption">	
-					<h3> {{lesson1.headline}} </h3>
-					<p> {{lesson1.content|safe}} </p>
-				</div>
-			</div>
-			
-			
-		</div>
-	
-	
-
-	
 	</div>
-	</div>
+</div>
 {% endblock %}
