@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	#my apps
 	'lessons',
 	'tur',
+	'hakkimizda',
 	#3.parti uygulamalar
 	'crispy_forms',
 	'ckeditor',

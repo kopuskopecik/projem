@@ -26,7 +26,7 @@
             <!-- Arama Çubuğu -->
             <form class="navbar-form navbar-left" role="search" method="GET" action="">
                 <div class="input-group">
-                    <input class="form-control" type="text" name="q" placeholder="Search on lessons" value="{{request.GET.q}}" >
+                    <input class="form-control" type="text" name="q" placeholder="Arama" value="{{request.GET.q}}" >
                     <span class="input-group-btn">
                         <input class="btn btn-default" type="submit" value="Ara">
                     </span>
@@ -42,6 +42,9 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<b>Genel</b> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
+					
+						<li role="separator" class="divider"></li>
+						<li><a href="{% url 'tur:index' %}"><b>Tüm İçerik</b></a></li>
 						{% for konu in genel1   %}
 						<li><a href="{{konu.get_absolute_url}}"><b>{{konu.headline}}</b></a></li>
 						{%  endfor  %}
@@ -65,7 +68,7 @@
 					</ul>
 				</li>
 				
-								<li class="dropdown">
+				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					<b>Paketler</b> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -78,6 +81,8 @@
 						{%  endfor  %}
 					</ul>
 				</li>
+				
+				<li><a href="{% url 'hakkimizda:hak' %}"><b>Hakkımızda</b></a></li>
 				{% if request.user.is_authenticated %}
 					<!--<li><a href="{% url 'lessons:create' %}">Add Lesson</a></li> -->
 					<li><a href="{% url 'tur:create' %}"><b>Ders Ekle</b></a></li>

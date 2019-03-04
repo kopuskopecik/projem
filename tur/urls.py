@@ -5,7 +5,7 @@ from .views import *
 app_name="tur"
 
 urlpatterns = [
-   
+
 	path('tr/icerik/', tur_index, name="index"),
 	path('tr/create', tur_create, name="create"),
 	url(r'^tr/(?P<slug>[\w-]+)/$', tur_detail, name="detail"),

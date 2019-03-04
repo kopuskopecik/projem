@@ -15,6 +15,34 @@ def tur_index(request):
 	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
 	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
 	
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Dersler.objects.filter(headline__icontains = query).distinct()
+	#print(query, type(query))
+		if b:
+			context = {
+			'b':b,
+			'genel1':genel1,
+			'genel2':genel2,
+			'moduller':moduller,
+			'paketler1':paketler1,
+			'paketler2':paketler2,
+			}
+			return render(request, 'searching.html', context)
+		else:
+			b = Dersler.objects.filter(content__icontains = query).distinct()
+			if b:
+				context = {
+				'b':b,
+				'genel1':genel1,
+				'genel2':genel2,
+				'moduller':moduller,
+				'paketler1':paketler1,
+				'paketler2':paketler2,
+				}
+				return render(request, 'searching.html', context)	
+	
 	lessons = Dersler.objects.all()
 	lesson1 = get_object_or_404(Dersler, number=1)
 	
@@ -38,6 +66,34 @@ def tur_detail(request, slug):
 	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
 	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
 	
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Dersler.objects.filter(headline__icontains = query).distinct()
+	#print(query, type(query))
+		if b:
+			context = {
+			'b':b,
+			'genel1':genel1,
+			'genel2':genel2,
+			'moduller':moduller,
+			'paketler1':paketler1,
+			'paketler2':paketler2,
+			}
+			return render(request, 'searching.html', context)
+		else:
+			b = Dersler.objects.filter(content__icontains = query).distinct()
+			if b:
+				context = {
+				'b':b,
+				'genel1':genel1,
+				'genel2':genel2,
+				'moduller':moduller,
+				'paketler1':paketler1,
+				'paketler2':paketler2,
+				}
+				return render(request, 'searching.html', context)	
+	
 	lesson = get_object_or_404(Dersler, slug=slug)
 	lessons = Dersler.objects.filter(filtre1 = lesson.filtre1)
 	other_lessons = Dersler.objects.exclude(slug = slug).filter(filtre2__contains = "ana").filter(number__gte = lesson.number)[0:6]
@@ -50,9 +106,7 @@ def tur_detail(request, slug):
 		previous_lesson = get_object_or_404(Dersler, number=Dersler.objects.last().number)
 	else:
 		previous_lesson = get_object_or_404(Dersler, number= lesson.number - 1)
-	
-	
-	
+			
 	context = {
 		'lesson': lesson,
 		'lessons': lessons,
@@ -77,6 +131,34 @@ def tur_create(request):
 	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
 	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
 	
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Dersler.objects.filter(headline__icontains = query).distinct()
+	#print(query, type(query))
+		if b:
+			context = {
+			'b':b,
+			'genel1':genel1,
+			'genel2':genel2,
+			'moduller':moduller,
+			'paketler1':paketler1,
+			'paketler2':paketler2,
+			}
+			return render(request, 'searching.html', context)
+		else:
+			b = Dersler.objects.filter(content__icontains = query).distinct()
+			if b:
+				context = {
+				'b':b,
+				'genel1':genel1,
+				'genel2':genel2,
+				'moduller':moduller,
+				'paketler1':paketler1,
+				'paketler2':paketler2,
+				}
+				return render(request, 'searching.html', context)	
+	
 	form = DerslerForm(request.POST or None)
 	if form.is_valid():
 		lesson=form.save()
@@ -97,12 +179,40 @@ def tur_create(request):
 def tur_update(request,slug):
 	if not request.user.is_authenticated:
 		return Http404()
-		
+
 	genel1 = Dersler.objects.filter(filtre2 = "ana1")
 	genel2 = Dersler.objects.filter(filtre2 = "ana2")
 	moduller = Dersler.objects.filter(filtre2 = "ana3")
 	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
 	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
+	
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Dersler.objects.filter(headline__icontains = query).distinct()
+	#print(query, type(query))
+		if b:
+			context = {
+			'b':b,
+			'genel1':genel1,
+			'genel2':genel2,
+			'moduller':moduller,
+			'paketler1':paketler1,
+			'paketler2':paketler2,
+			}
+			return render(request, 'searching.html', context)
+		else:
+			b = Dersler.objects.filter(content__icontains = query).distinct()
+			if b:
+				context = {
+				'b':b,
+				'genel1':genel1,
+				'genel2':genel2,
+				'moduller':moduller,
+				'paketler1':paketler1,
+				'paketler2':paketler2,
+				}
+				return render(request, 'searching.html', context)
 		
 	lesson = get_object_or_404(Dersler, slug=slug)
 	form = DerslerForm(request.POST or None, instance=lesson)

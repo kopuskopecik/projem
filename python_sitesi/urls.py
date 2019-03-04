@@ -22,5 +22,6 @@ urlpatterns = [
 	path('', home_view, name="home"),
 	path('', include('lessons.urls')),
 	path('', include('tur.urls')),
+	path('', include('hakkimizda.urls')),
 	
 ]

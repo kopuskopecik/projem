@@ -4,13 +4,13 @@
 
 <div class = "container">
 <div class="row">
-	{% for lesson in lessons   %}
+	{% for lesson in b %}
 	
 	<div class = "col-md-6 col-sm-12 col-xs-12">
 		<div class = "basliklar {{lesson.filtre1}} {{lesson.filtre2}}">
 			<a href="{{lesson.get_absolute_url}}">
 				<h4 class = " abc text-center">
-				{{lesson.headline}}
+				{{lesson.number}}.{{lesson.headline}}
 				</h4>
 			</a>
 		</div>		

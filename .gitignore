@@ -8,12 +8,15 @@ db.sqlite3
 home/migrations/*
 !home/migrations/__init__.py
 
-
 lessons/migrations/*
 !lessons/migrations/__init__.py
 
 tur/migrations/*
 !tur/migrations/__init__.py
+
+hakkimizda/migrations/*
+!hakkimizda/migrations/__init__.py
+
 staticfiles/
 
 lokal.py

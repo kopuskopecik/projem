@@ -8,8 +8,14 @@
 		{% for lesson in lessons   %}
 		
 			<div class = "col col-md-6 col-sm-6 col-xs-12">
-			<p><a class="index {{lesson.filtre1}} {{lesson.filtre2}}" href="{{lesson.get_absolute_url}}">
-				<b>{{lesson.number}}.{{lesson.headline}}</b></a></p>
+				<ul class="list-group">
+					<a class ="index" href="{{lesson.get_absolute_url}}"><li class="list-group-item">
+						<span class="badge">{{lesson.number}}</span>
+					{{lesson.headline}}
+					</li></a>
+				</ul>
+			
+
 		
 		
 			</div>
