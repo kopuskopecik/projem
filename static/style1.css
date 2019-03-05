@@ -20,6 +20,7 @@ h4, .detailbaslik {
 	color: #dc0606;
 }
 
+
 .index:hover {
 	color:mediumseagreen;
 }
@@ -162,6 +163,12 @@ th {
 .badge {
 	background-color: darkgreen;
 }
+
+.hakkimizda {
+	width: 50%;
+	margin: 0 auto;
+}
+
 table {
 	table-layout: fixed;
 	width: auto;

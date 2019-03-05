@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from tur.models import Dersler
-from django.db.models import Q
 #import random
 
 # Create your views here.

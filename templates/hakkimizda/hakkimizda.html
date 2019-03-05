@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<div class="container">
+	<div class="row">
+	
+		<div class ="col-md-12">
+			<div>
+				<h1 class = "text-center">Hakkımızda</h1>
+				<p>PythonAKADEMI bir grup Pythonsever arkadaş tarafından oluşturulmuştur. Amacımız özellikle programlama hayatımızı oldukça kolaylaştıran Python modül ve paketleri için Türkçe bir kaynak oluşturmak. 
+				İlk etapta Django, kivy, pygame, sphinx gibi paketleri ile ilgili bilgileri sitemize yüklemek. Şuanda bir web framework'u olan Django ile ilgili dokümantasyon oluşturulma aşamasındadır.</p>
+				
+				<p>PythonAKADEMİ, Python modül ve paketlerini kullanabilmek için öncelikle Python programla dilini, kendisi gibi sade ve anlaşılır bir şekilde 
+öğretmeyi amaçlamaktadır. Bu yüzden içeriğin oluşturulmasında birçok farklı kaynak incelenmiştir. Özellikle şuanda açık olmayan www.istihza.com tarafından oluşturulmuş <b>"Python için Türkçe Kılavuz"</b> pdf dokümanı(bizce mutlaka incelenmelidir'), 
+Charles R.Severance'nin <b>"Python for Everybody"</b> kitabı, Python3.6'ın içerisinde yer alan <b>help kütüphanesi</b>, Python'ın resmi sitesinde bulunan <a href = "https://docs.python.org/3.6/"><b>https://docs.python.org/3.6/</b></a> dokümantasyonu, 
+John E.Grayson'a ait <b>"Python and Tkinter Programming"</b> kaynaklarından faydalanılmıştır. Sitemizde kullandığımız tüm örnekler PythonAKADEMI tarafından hazırlanmıştır. 
+				</p>
+				
+				<p>Son olarak sitemizde ne yazık ki her şey mükemmel değil ve elbette hatalarımız olmuştur. Bu yüzden sitemizde görmüş olduğunuz hataları, eksikleri bize bildirmeniz önemle rica olunur. Bunun için aşağıdaki form üzerinden bize ulaşabilirsiniz.				
+				</p>
+				
+				<p class = "text-center"> 05.03.2019 </p>
+						
+				<form method="POST" class = "hakkimizda">
+					{% csrf_token %}
+					<h1 class ="text-center">İletişim</h1>
+					{{form|crispy}}
+					{{form.media}}
+					<input class="btn btn-primary" type="submit" value="Gönder">
+				</form>
+			</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}
