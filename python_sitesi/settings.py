@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 	#3.parti uygulamalar
 	'crispy_forms',
 	'ckeditor',
+	'captcha',
 ]
 
 MIDDLEWARE = [
@@ -140,5 +141,9 @@ CKEDITOR_CONFIGS = {
 		'width':'100%',
 	},
 }
+
+RECAPTCHA_PUBLIC_KEY = '6Lf64pUUAAAAAIDe__tdy73eA2-2K3sYfakuCqQw'
+RECAPTCHA_PRIVATE_KEY = '6Lf64pUUAAAAAAz4zzOsS2WI5CGsQkYLW35M2xXI'
+NOCAPTCHA= True
 
 from .lokal import *
