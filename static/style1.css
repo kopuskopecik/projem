@@ -15,6 +15,14 @@ body {
 	font-size: 16px;
 }
 
+.navbar-brand {
+    color: #fcf8e3;
+	font-family: 'Lobster', cursive;
+	font-size:22px;
+	border:none;
+}
+
+
 h4, .detailbaslik {
 	font-family: 'Roboto', 'Arial';
 	color: #dc0606;
