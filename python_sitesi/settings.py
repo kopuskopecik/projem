@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	#my apps
-	'lessons',
 	'tur',
 	'hakkimizda',
 	#3.parti uygulamalar

@@ -6,9 +6,9 @@ app_name="tur"
 
 urlpatterns = [
 
-	path('tr/icerik/', tur_index, name="index"),
-	path('tr/create', tur_create, name="create"),
-	url(r'^tr/(?P<slug>[\w-]+)/$', tur_detail, name="detail"),
-	url(r'^tr/(?P<slug>[\w-]+)/update/', tur_update, name="update"),
-	url(r'^tr/(?P<slug>[\w-]+)/delete/', tur_delete, name="delete"),
+	path('icerik/', tur_index, name="index"),
+	path('create', tur_create, name="create"),
+	url(r'^(?P<slug>[\w-]+)/$', tur_detail, name="detail"),
+	url(r'^(?P<slug>[\w-]+)/update/', tur_update, name="update"),
+	url(r'^(?P<slug>[\w-]+)/delete/', tur_delete, name="delete"),
 ]
