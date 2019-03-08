@@ -14,9 +14,12 @@
 	</script>
 
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Python, Python Dersleri, ">
+	{% block metalar %}
+	<meta name="description" content="Python Programlama Diline ve Modüllerine Yönelik 533 konu ve binlerce kod örnekleri, ">
 	<meta name="keywords" content="Python, Python Dersleri, Python Modül ve Paketleri, re, os, sys, 
 	sqlite3, math, random, datetime, time calendar, tkinter, pmw">
+	{% endblock %}
+	
 	<meta name="author" content="Pythonakademi">
 	<!--<link rel="shortcut icon" href="{% static 'img/python.ico'%}" /> -->
 	<title>{% block title %} PythonAkademi {% endblock %}</title>
