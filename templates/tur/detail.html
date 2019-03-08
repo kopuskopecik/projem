@@ -9,6 +9,10 @@
 
 <title>{% block title %} {{lesson.headline}} {% endblock %}</title>
 
+{% block href %}
+	<link rel="alternate" href="{{lesson.slug}}"  hreflang="tr tr-gb tr-de tr-au" />
+	{% endblock %}
+
 {% block body %}
 <div class="container-fluid">
 	<div class="row">
