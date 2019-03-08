@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block metalar %}	
+		
 		<meta name="description" content="{{lesson.headline}}">
 		<meta name="keywords" content="{{lesson.headline}}, Python Dersleri">
+		<meta name="author" content="PythonAkademi">
 {% endblock%}
 
 <title>{% block title %} {{lesson.headline}} {% endblock %}</title>
-
 
 {% block body %}
 <div class="container-fluid">
