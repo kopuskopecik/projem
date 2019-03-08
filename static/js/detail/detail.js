@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	var a = 0;
 	
 	   $(".menu1").click(function(){
