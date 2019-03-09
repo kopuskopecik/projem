@@ -6,7 +6,7 @@
 		<meta name="keywords" content=" Python Dersleri {{lesson.headline}}">
 {% endblock%}
 
-<title>{% block title %} Python-{{lesson.headline}} {% endblock %}</title>
+<title>{% block title %} {{lesson.filtre1}}-{{lesson.headline}} {% endblock %}</title>
 {% block dil %} <link rel="alternate" hreflang="tr" href="https://www.pythonakademi.com{{lesson.get_absolute_url}}" />                                    {% endblock %}
 
 {% block body %}
