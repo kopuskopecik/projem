@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block metalar %}	
-		
-		<meta name="description" content="{{lesson.headline}}">
-		<meta name="keywords" content="{{lesson.headline}}, Python Dersleri">
+{% block metalar %}		
+		<meta name="description" content="Python Dersleri-{{lesson.headline}}">
+		<meta name="keywords" content=" Python Dersleri {{lesson.headline}}">
 {% endblock%}
 
 <title>{% block title %} {{lesson.headline}} {% endblock %}</title>
