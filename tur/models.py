@@ -36,7 +36,7 @@ class Dersler(models.Model):
 		slug = slugify(self.headline.replace("ı","i"))
 		unique_slug = slug
 		counter = 1
-		while Dersler.objects.filter(slug=unique_slug).exists():
+		while Dersler.objects.filter(slug=unique_slug).exclude(publishing_date = self.publishing_date).exists():
 			unique_slug = "{}-{}".format(slug, counter)
 			counter +=1 
 		return unique_slug
