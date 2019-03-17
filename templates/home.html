@@ -5,7 +5,11 @@
 <div class = "container">
 <div class="row">
 	{% for lesson in lessons   %}
-	{% if forloop.counter == 5 %}
+
+	
+	<div class = "col-md-6 col-sm-12 col-xs-12">
+	
+		{% if forloop.counter == 5 %}
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<ins class="adsbygoogle"
      style="display:block"
@@ -33,7 +37,6 @@
 	
 	{%  endif  %}
 	
-	<div class = "col-md-6 col-sm-12 col-xs-12">
 		<div class = "basliklar {{lesson.filtre1}} {{lesson.filtre2}}">
 			<a href="{{lesson.get_absolute_url}}">
 				<h4 class = " abc text-center">
