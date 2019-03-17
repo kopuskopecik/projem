@@ -26,6 +26,7 @@ body {
 
 .reklam {
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 h4, .detailbaslik {
@@ -161,6 +162,9 @@ th {
 	display:none;
 }
 
+.reklam1{
+	display: none;
+}
 
 }
 
@@ -169,6 +173,7 @@ th {
 .solmenu{
 	display: none;
 }
+
 
 
 }
