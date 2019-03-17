@@ -43,8 +43,8 @@ h4, .detailbaslik {
 }
 
 .basliklar {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	background-color: #9B2335;
 	color: white;
 	padding: 10px;
@@ -162,9 +162,6 @@ th {
 	display: none;
 }
 
-.reklam1{
-	display: none;
-}
 
 }
 
