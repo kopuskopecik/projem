@@ -24,6 +24,9 @@ body {
 	border:none;
 }
 
+.reklam {
+	margin: auto;
+}
 
 h4, .detailbaslik {
 	font-family: 'Roboto', 'Arial';

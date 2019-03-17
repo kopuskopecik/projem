@@ -13,22 +13,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class = "col-md-2 col-sm-3 col-xs-12 detailmenu">
-		{% for ders in lessons   %}
-		
-		{% if forloop.counter == 7 %}
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-fb+5w+4e-db+86"
-     data-ad-client="ca-pub-6592386402749117"
-     data-ad-slot="3492194044"></ins>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
-	
-	{%  endif  %}
-		
+		{% for ders in lessons   %}	
 		<a class="index" href="{{ders.get_absolute_url}}">
 		<h4 class="baslik {% if ders.slug == lesson.slug  %} tik {% endif %}" ><b>{{ders.headline}}</b>
 		</h4>
