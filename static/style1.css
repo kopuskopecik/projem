@@ -24,9 +24,6 @@ body {
 	border:none;
 }
 
-.reklam {
-	margin: auto;
-}
 
 h4, .detailbaslik {
 	font-family: 'Roboto', 'Arial';
@@ -43,8 +40,7 @@ h4, .detailbaslik {
 }
 
 .basliklar {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 20px;
 	background-color: #9B2335;
 	color: white;
 	padding: 10px;
@@ -159,12 +155,9 @@ th {
 @media (max-width: 767px) {
 
 .detailmenu{
-	display: none;
+	display:none;
 }
 
-.reklam {
-	margin:auto;
-}
 
 }
 
@@ -174,9 +167,6 @@ th {
 	display: none;
 }
 
-.reklam {
-	margin:auto;
-}
 
 }
 
