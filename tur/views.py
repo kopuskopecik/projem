@@ -58,7 +58,7 @@ def tur_index(request):
 	
 	return render(request, 'tur/index.html', context)
 
-def tur_detail(request, slug):
+def tur_detail(request, slug, slug2):
 
 	genel1 = Dersler.objects.filter(filtre2 = "ana1")
 	genel2 = Dersler.objects.filter(filtre2 = "ana2")
@@ -176,7 +176,7 @@ def tur_create(request):
 
 	return render(request, 'tur/form.html',context)
 	
-def tur_update(request,slug):
+def tur_update(request, slug, slug2):
 	if not request.user.is_authenticated:
 		return Http404()
 
@@ -231,7 +231,7 @@ def tur_update(request,slug):
 	}
 	return render(request, 'tur/form.html',context)
 
-def tur_delete(request,slug):
+def tur_delete(request, slug, slug2):
 	if not request.user.is_authenticated:
 		return Http404()
 		

@@ -13,6 +13,9 @@ class Dersler(models.Model):
 	updating_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now=True)
 	filtre1 = models.CharField(max_length=100, default = "-")
 	filtre2 = models.CharField(max_length=100, default = "-")
+	descriptions = models.CharField(max_length=500, default = "Python Dersleri")
+	anahtar = models.CharField(max_length=500, default = "Python Dersleri")
+	slug2 = models.SlugField( max_length=130, default = "python")
 	
 	def __str__(self):
 		return self.headline
@@ -21,20 +24,22 @@ class Dersler(models.Model):
 		ordering = ['number']
 	
 	def get_absolute_url(self):
-		return reverse('tur:detail', kwargs={'slug':self.slug})
+		return reverse('tur:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
 	
 	def get_create_url(self):
 		return reverse('tur:create')
 	
 	def get_update_url(self):
-		return reverse('tur:update', kwargs={'slug':self.slug})
+		return reverse('tur:update', kwargs={'slug':self.slug, 'slug2':self.slug2})
 	
 	def get_delete_url(self):
-		return reverse('tur:delete', kwargs={'slug':self.slug})
+		return reverse('tur:delete', kwargs={'slug':self.slug, 'slug2':self.slug2})
 		
 	def get_unique_slug(self):
 		slug = slugify(self.headline.replace("ı","i"))
 		unique_slug = slug
+		slug2 = slugify(self.filtre1.replace("ı","i"))
+		self.slug2 = slug2
 		counter = 1
 		while Dersler.objects.filter(slug=unique_slug).exclude(publishing_date = self.publishing_date).exists():
 			unique_slug = "{}-{}".format(slug, counter)
@@ -60,4 +65,3 @@ class Dersler(models.Model):
 			self.set_number()
 		
 		return super(Dersler, self).save(*args, **kwargs)
-	
