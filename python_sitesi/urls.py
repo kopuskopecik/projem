@@ -25,7 +25,7 @@ from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 sitemaps = {
 	'static' : StaticDerslerViewSitemap,
 	'dersler': DerslerSitemap,
-	'static' : StaticViewSitemap,
+	'static1' : StaticViewSitemap,
 }
 
 urlpatterns = [
