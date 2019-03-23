@@ -19,11 +19,13 @@ from django.urls import path, include
 from home.views import home_view
 
 from home.sitemaps import DerslerSitemap 
-#from home.sitemaps import StaticViewSitemap
+from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
+
 
 sitemaps = {
+	'static' : StaticDerslerViewSitemap,
 	'dersler': DerslerSitemap,
-	#'static' : StaticViewSitemap,
+	'static' : StaticViewSitemap,
 }
 
 urlpatterns = [
