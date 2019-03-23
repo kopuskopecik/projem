@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import get_object_or_404, render, Http404, redirect, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, Http404, redirect, HttpResponseRedirect, get_list_or_404
 from .models import Dersler
 from .forms import DerslerForm
 from django.contrib import messages
@@ -57,6 +57,55 @@ def tur_index(request):
 	}
 	
 	return render(request, 'tur/index.html', context)
+	
+def ana_index(request, slug2):
+
+	genel1 = Dersler.objects.filter(filtre2 = "ana1")
+	genel2 = Dersler.objects.filter(filtre2 = "ana2")
+	moduller = Dersler.objects.filter(filtre2 = "ana3")
+	paketler1 = Dersler.objects.filter(filtre2 = "ana4")
+	paketler2 = Dersler.objects.filter(filtre2 = "ana5")
+	
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Dersler.objects.filter(headline__icontains = query).distinct()
+	#print(query, type(query))
+		if b:
+			context = {
+			'b':b,
+			'genel1':genel1,
+			'genel2':genel2,
+			'moduller':moduller,
+			'paketler1':paketler1,
+			'paketler2':paketler2,
+			}
+			return render(request, 'searching.html', context)
+		else:
+			b = Dersler.objects.filter(content__icontains = query).distinct()
+			if b:
+				context = {
+				'b':b,
+				'genel1':genel1,
+				'genel2':genel2,
+				'moduller':moduller,
+				'paketler1':paketler1,
+				'paketler2':paketler2,
+				}
+				return render(request, 'searching.html', context)	
+	
+	lessons = get_list_or_404(Dersler, slug2=slug2)
+	
+	context = {
+		'lessons':lessons,
+		'genel1':genel1,
+		'genel2':genel2,
+		'moduller':moduller,
+		'paketler1':paketler1,
+		'paketler2':paketler2,
+	}
+	
+	return render(request, 'tur/ana_index.html', context)
 
 def tur_detail(request, slug, slug2):
 
