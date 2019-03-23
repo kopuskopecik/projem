@@ -6,5 +6,5 @@ app_name="hakkimizda"
 
 urlpatterns = [
 
-	path('hakkimizda/iletisim/', hakkimizda, name="hak"),
+	path('hakkimizda/', hakkimizda, name="hak"),
 ]

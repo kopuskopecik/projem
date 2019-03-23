@@ -32,7 +32,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 	path('sitemap.xml', sitemap, {'sitemaps':sitemaps}),
 	path('', home_view, name="home"),
-	path('', include('tur.urls')),
 	path('', include('hakkimizda.urls')),
+	path('', include('tur.urls')),
+	
 	
 ]

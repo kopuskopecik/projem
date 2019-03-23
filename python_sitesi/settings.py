@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	#my apps
-	'tur',
 	'hakkimizda',
+	'tur',
 	#3.parti uygulamalar
 	'crispy_forms',
 	'ckeditor',
