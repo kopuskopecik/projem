@@ -27,8 +27,14 @@ class StaticViewSitemap(Sitemap):
 class StaticDerslerViewSitemap(Sitemap):
 	protocol = "https"
 	
-	def items(self):		
-		return Dersler.objects.filter(filtre2__contains = "ana")
+	
+	def items(self):
+		liste = []
+		for i in Dersler.objects.filter(filtre2__contains = "ana"):
+			liste.append(i.slug2)
+		liste = list(set(liste))
+		
+		return liste
 		
 	def location(self, item):
-		return "/" + item.slug2+ "/"
+		return "/" + item + "/"
