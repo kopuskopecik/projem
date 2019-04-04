@@ -70,7 +70,7 @@
 				
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					<b>Packets</b> <span class="caret"></span></a>
+					<b>Packages</b> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						{% for konu in paketler1   %}
 						<li><a href="{{konu.get_absolute_url}}"><b>{{konu.headline}}</b></a></li>
@@ -82,7 +82,7 @@
 					</ul>
 				</li>
 				
-				<li><a href="{% url 'ingilizce:about' %}"><b>About</b></a></li>
+				<!--<li><a href="{% url 'ingilizce:about' %}"><b>About</b></a></li> -->
 				{% if request.user.is_authenticated %}
 					<li><a href="{% url 'ingilizce:create' %}"><b>Add Lesson</b></a></li>
 				{% endif %}
