@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+
+<meta name="google-site-verification" content="PUTrQmtpisnLh5wjd968M4sXwMhVt607eWm27qMwwy4" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6592386402749117",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- Metalar -->
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">	
+	<title>{% block title %} PythonAkademi-Python Lessons {% endblock %}</title>
+	{% block dil %}<link rel="alternate" hreflang="en" href="https://www.pythonakademi.com/" />{% endblock %}	
+	{% block metalar %}
+	<meta name="description" content="More than 500 topics and 1000 examples about Python, its modules and packets">
+	<meta name="keywords" content="Python, Python Lessons, Python Examples, Python Modules and Packets, re, os, sys, 
+	sqlite3, math, random, datetime, time, calendar, tkinter, pmw, django">
+	{% endblock %}	
+	<meta name="author" content="Pythonakademi">
+	<!--<link rel="shortcut icon" href="{% static 'img/python.ico'%}" /> -->
+	<link rel="stylesheet" href="{% static 'css/all.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/ingilizce/style1.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	
+</head>
+<body>
+	{% include 'ingilizce/header.html' %}
+	{% include 'message.html' %}
+	{% block body %}
+	
+	{% endblock %}
+	
+	
+</body>
+</html>
