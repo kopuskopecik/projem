@@ -37,4 +37,4 @@ class StaticDerslerViewSitemap(Sitemap):
 		return liste
 		
 	def location(self, item):
-		return "/" + item + "/"
+		return "/python/" + item + "/"
