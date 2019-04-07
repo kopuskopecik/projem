@@ -46,7 +46,7 @@ class LessonIndexView(HeaderMixin, ListView):
 	context_object_name = 'lessons'
 	
 	def get_queryset(self):
-		return Lesson.objects.all()
+		return Lesson.objects.filter(filtre2__contains = "ana")
 	
 	
 class AnaIndexView(HeaderMixin, ListView):
