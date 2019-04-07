@@ -77,6 +77,16 @@ class LessonAllIndexView(HeaderMixin, ListView):
 class LessonDetailView(HeaderMixin, DetailView):
     model = Lesson
     template_name = 'ingilizce/detail.html'
+	
+    def get_context_data(self, **kwargs):
+        context = super(LessonDetailView, self).get_context_data(**kwargs)
+        
+        common = Lesson.objects.filter(slug2 = self.kwargs['slug2'])
+        # other_lessons = Lesson.objects.exclude(slug = self.kwargs['slug']).filter(filtre2__contains = "ana").filter(number__gte = self.kwargs['number'])[0:6]
+        context["common_lessons"] = common
+        return context
+		
+
 
 class LessonCreateView(LoginRequiredMixin, HeaderMixin, CreateView):
 	model = Lesson

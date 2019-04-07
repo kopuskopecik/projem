@@ -22,6 +22,8 @@ class MyManager(models.Manager):
 	
 	def packet2(self, **kwargs):
 		return self.filter(filtre2 = "ana5")
+	
+
 		
 
 class Lesson(models.Model):
