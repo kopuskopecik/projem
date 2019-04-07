@@ -2,6 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 from tur.models import Dersler
+from ingilizce.models import Lesson
 
 
 
@@ -13,6 +14,8 @@ class DerslerSitemap(Sitemap):
 		
 	def lastmod(self, obj):
 		return obj.updating_date
+		
+
 
 
 class StaticViewSitemap(Sitemap):
@@ -38,3 +41,12 @@ class StaticDerslerViewSitemap(Sitemap):
 		
 	def location(self, item):
 		return "/python/" + item + "/"
+
+class LessonSitemap(Sitemap):
+	protocol = "https"
+
+	def items(self):
+		return Lesson.objects.all()[0:16]
+		
+	def lastmod(self, obj):
+		return obj.updating_date

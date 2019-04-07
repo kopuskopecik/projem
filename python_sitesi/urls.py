@@ -18,7 +18,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 from home.views import home_view
 
-from home.sitemaps import DerslerSitemap 
+from home.sitemaps import DerslerSitemap, LessonSitemap
 from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 
 
@@ -26,6 +26,7 @@ sitemaps = {
 	'static' : StaticDerslerViewSitemap,
 	'dersler': DerslerSitemap,
 	'static1' : StaticViewSitemap,
+	'lessons': LessonSitemap,
 }
 
 urlpatterns = [
