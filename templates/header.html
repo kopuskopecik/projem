@@ -82,7 +82,7 @@
 					</ul>
 				</li>
 				
-				<li><a href="{% url 'hakkimizda:hak' %}"><b>Hakkımızda</b></a></li>
+			<!--	<li><a href="{% url 'hakkimizda:hak' %}"><b>Hakkımızda</b></a></li> -->
 				{% if request.user.is_authenticated %}
 					<li><a href="{% url 'tur:create' %}"><b>++</b></a></li>
 				{% endif %}
