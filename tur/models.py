@@ -1,7 +1,11 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+
 from ckeditor.fields import RichTextField
+
+#from ingilizce.models import Lesson
+
 
 # Create your models here.
 class Dersler(models.Model):
@@ -25,6 +29,7 @@ class Dersler(models.Model):
 	
 	def get_absolute_url(self):
 		return reverse('tur:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
+		
 	
 	def get_create_url(self):
 		return reverse('tur:create')

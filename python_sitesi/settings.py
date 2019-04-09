@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	#my apps
 	'hakkimizda',
-	'tur',
 	'ingilizce',
+	'tur',
 	#3.parti uygulamalar
 	'crispy_forms',
 	'ckeditor',

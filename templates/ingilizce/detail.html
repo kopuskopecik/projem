@@ -3,11 +3,11 @@
 
 {% block metalar %}		
 		<meta name="description" content="{{lesson.descriptions}}">
-		<meta name="keywords" content="{{lesson.anahtar}}}">
+		<meta name="keywords" content="{{lesson.anahtar}}">
 {% endblock%}
 
 <title>{% block title %} {{lesson.filtre1}}-{{lesson.headline}} {% endblock %}</title>
-{% block dil %} <link rel="alternate" hreflang="en" href="https://www.pythonakademi.com{{lesson.get_absolute_url}}" />                                    {% endblock %}
+{% block dil %} <link rel="alternate" hreflang="tr" href="https://www.pythonakademi.com{{lesson.hreflang_get_absolute_url}}" />                                    {% endblock %}
 
 {% block body %}
 <div class="container-fluid">

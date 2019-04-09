@@ -4,6 +4,7 @@ from django.utils.text import slugify
 
 from ckeditor.fields import RichTextField
 
+from tur.models import Dersler
 
 class MyManager(models.Manager):
 	use_for_related_fields = True
@@ -50,6 +51,13 @@ class Lesson(models.Model):
 	def get_absolute_url(self):
 		return reverse('ingilizce:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
 
+	def hreflang_get_absolute_url(self):
+		if self.number < 22:
+			if Dersler.objects.filter(number = self.number).exists():
+				lesson = Dersler.objects.get(number = self.number)
+			
+				return reverse('tur:detail', kwargs={'slug':lesson.slug, 'slug2':lesson.slug2})
+		return reverse('home')
 	def get_create_url(self):
 		return reverse('ingilizce:create')
 	

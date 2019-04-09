@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, render, Http404, redirect, HttpResponseRedirect, get_list_or_404
-from .models import Dersler
+from tur.models import Dersler
 from .forms import DerslerForm
 from django.contrib import messages
+
+from ingilizce.models import Lesson
 
 # Create your views here.
 def tur_index(request):
@@ -156,7 +157,20 @@ def tur_detail(request, slug, slug2):
 	else:
 		previous_lesson = get_object_or_404(Dersler, number= lesson.number - 1)
 			
+	if lesson.number < 22:
+		if Lesson.objects.filter(number = lesson.number).exists():
+			href_lesson = Lesson.objects.get(number = lesson.number)
+			
+			hreflang = reverse('ingilizce:detail', kwargs={'slug':href_lesson.slug, 'slug2':href_lesson.slug2})
+		else:
+			hreflang = reverse('ingilizce:index')
+	
+	else:
+		hreflang = reverse('ingilizce:index')
+	
+	
 	context = {
+		'hreflang': hreflang,
 		'lesson': lesson,
 		'lessons': lessons,
 		'next_lesson': next_lesson,
