@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
-from home.views import home_view
+from django.views.generic import TemplateView
 
+from home.views import home_view
 from home.sitemaps import DerslerSitemap, LessonSitemap
 from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 
@@ -32,7 +33,8 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('sitemap.xml', sitemap, {'sitemaps':sitemaps}),
-	path('', home_view, name="home"),
+	path('', home_view, name = "home"),
+	path('robot.txt', TemplateView.as_view(template_name="robots.txt", content_type ="text/plain")),
 	path('python/', include('tur.urls')),
 	path('en/python/', include('ingilizce.urls')),
 	path('', include('hakkimizda.urls')),
