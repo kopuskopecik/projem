@@ -46,7 +46,7 @@ class LessonSitemap(Sitemap):
 	protocol = "https"
 
 	def items(self):
-		return Lesson.objects.all()[0:45]
+		return Lesson.objects.all()[0:76]
 		
 	def lastmod(self, obj):
 		return obj.updating_date
