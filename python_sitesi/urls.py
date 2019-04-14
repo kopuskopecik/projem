@@ -24,7 +24,7 @@ from home.sitemaps import DerslerSitemap, LessonSitemap
 from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 
 
-handler404 = 'view_404' 
+handler404 = 'home_view' 
 
 
 sitemaps = {
