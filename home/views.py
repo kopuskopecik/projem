@@ -49,3 +49,8 @@ def home_view(request):
 		'paketler2':paketler2,
 	}
 	return render(request,'home.html',context)
+	
+def view_404(request):
+    # make a redirect to homepage
+    # you can use the name of url or just the plain link
+    return redirect('/')
