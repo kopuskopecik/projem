@@ -19,13 +19,14 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 #from django.conf.urls import handler404
 
-from home.views import home_view, view_404
+from home.views import home_view
 from home.sitemaps import DerslerSitemap, LessonSitemap
 from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 
 
-handler404 = 'home_view' 
+#handler404 = 'home_view' 
 
+handler404 = 'home.views.view_404'
 
 sitemaps = {
 	'static' : StaticDerslerViewSitemap,
