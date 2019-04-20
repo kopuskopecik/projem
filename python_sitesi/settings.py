@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y5s(@x(xo@hi#s#7pg638s48!2k%^^s*nqx225p%0$!s+fxlcn'
+
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+#DEBUG = False
 
-ALLOWED_HOSTS = ['www.pythonakademi.com']
+#ALLOWED_HOSTS = ['www.pythonakademi.com']
 #ALLOWED_HOSTS = []
 
 # Application definition
@@ -151,4 +156,4 @@ RECAPTCHA_PRIVATE_KEY = '6Lf64pUUAAAAAAz4zzOsS2WI5CGsQkYLW35M2xXI'
 NOCAPTCHA= True
 
 
-from .lokal import *
+#from .lokal import *
