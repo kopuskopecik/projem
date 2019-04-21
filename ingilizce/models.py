@@ -52,7 +52,7 @@ class Lesson(models.Model):
 		return reverse('ingilizce:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
 
 	def hreflang_get_absolute_url(self):
-		if self.number < 100:
+		if self.number < 158:
 			if Dersler.objects.filter(number = self.number).exists():
 				lesson = Dersler.objects.get(number = self.number)
 			
