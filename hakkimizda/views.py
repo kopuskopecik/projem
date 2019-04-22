@@ -4,7 +4,7 @@ from tur.models import Dersler
 from .models import Iletisim
 from .forms import IletisimForm
 from django.contrib import messages
-#from django.core.mail import send_mail
+from django.core.mail import send_mail
 
 # Create your views here.
 def hakkimizda(request):
@@ -55,7 +55,7 @@ def hakkimizda(request):
 		
 	
 
-    #send_mail('subject', 'body of the message', 'noreply@pythonakademi.com', ['kopuskopecik@gmail.com'])	
+    send_mail('subject', 'body of the message', 'noreply@pythonakademi.com', ['kopuskopecik@gmail.com'])	
 		
 	context = {
 		'form':form,
