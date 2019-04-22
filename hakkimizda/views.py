@@ -4,6 +4,7 @@ from tur.models import Dersler
 from .models import Iletisim
 from .forms import IletisimForm
 from django.contrib import messages
+from django.core.mail import send_mail
 
 # Create your views here.
 def hakkimizda(request):
@@ -51,6 +52,11 @@ def hakkimizda(request):
 		messages.success(request, "Mesajınız başarı ile alınmıştır. En kısa zamanda sizinle iletişime geçilecektir.",extra_tags="mesaj-basarili")
 		#return HttpResponseRedirect(kelime.get_absolute_url())
 		return redirect('hakkimizda:hak')
+		
+	
+
+    send_mail('subject', 'body of the message', 'noreply@pythonakademi.com', ['kopuskopecik@gmail.com'])	
+		
 	context = {
 		'form':form,
 		'genel1':genel1,
