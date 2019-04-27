@@ -32,8 +32,9 @@
 
 <h2>{{lesson.hreflang_get_absolute_url}}</h1>			
 				<div class = "oklar">
-					<a class="btn btn-warning menu menu1" role="button"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></a>
 					<a href="{{previous_lesson.get_absolute_url}}" class="btn btn-success menu" role="button"><</a>
+					<a class="btn btn-warning menu menu1" role="button"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span></a>
+					<a href="{{hreflang}}" class = "btn btn-info"><b>EN</b></a>
 					<a href="{{next_lesson.get_absolute_url}}" class="btn btn-success btn-center ikinci menu" role="button">></a>
 		
 				</div>
@@ -48,9 +49,9 @@
 					</h3>
 				
 					{{lesson.content|safe}}
-					
+					<!--
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<!-- Detay sonu -->
+					 Detay sonu 
 					<ins class="adsbygoogle"
 						style="display:block"
 						data-ad-client="ca-pub-6592386402749117"
@@ -60,7 +61,7 @@
 					<script>
 						(adsbygoogle = window.adsbygoogle || []).push({});
 					</script>
-					
+					-->
 					<p class = "text-primary text-center"><b>Edit: {{lesson.updating_date}}</b></p>
 				
 				<div class = "oklar">
@@ -81,7 +82,7 @@
 			{% for lesson in other_lessons   %}
 				<div class = "col-md-6 col-sm-12 col-xs-12">
 				
-				{% if forloop.counter == 1 %}
+				<!--{% if forloop.counter == 1 %}
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<ins class="adsbygoogle"
      style="display:block"
@@ -94,7 +95,7 @@
 	</script>
 	
 	{%  endif  %}
-				
+				-->
 					<div class = "basliklar {{lesson.filtre1}}">
 						<a href="{{lesson.get_absolute_url}}"><h4 class = " abc text-center">{{lesson.headline}}</h4></a>
 					</div>		

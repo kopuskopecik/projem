@@ -44,6 +44,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 	<script src="{% static 'js/jquery.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/default.min.css' %}">
+	<script src="{% static 'js/highlight.min.js' %}"></script>
 	
 </head>
 
@@ -149,6 +151,6 @@
 	
 	{% endblock %}
 	
-	
+	<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
