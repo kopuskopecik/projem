@@ -43,7 +43,7 @@
 				
 					{{lesson.content|safe}}
 					
-					<p class = "text-primary text-center"><b>Edit: {{lesson.updating_date}}</b></p>
+					<p class = "text-primary text-center"><b>Edit: {{lesson.updating_date|date:"d/m/y"}}</b></p>
 				
 				<div class = "oklar">
 					<a href="{{lesson.previous_lesson}}" class="btn btn-success" role="button"><</a>
