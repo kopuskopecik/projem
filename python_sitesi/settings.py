@@ -162,6 +162,7 @@ CKEDITOR_CONFIGS = {
             [
                 'codesnippet',
             ]),
+		#'codeSnippet_theme':'school_book',
 	},
 }
 

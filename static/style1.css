@@ -98,6 +98,10 @@ code {
 	background-color: #101010;
 }
 
+.language-python {
+	font-size: 14px;
+}
+
 blockquote {
 	border-left-color: #101010;
     padding: 10px 10px;
