@@ -157,7 +157,7 @@ def tur_detail(request, slug, slug2):
 	else:
 		previous_lesson = get_object_or_404(Dersler, number= lesson.number - 1)
 			
-	if lesson.number < 458:
+	if lesson.number < 486:
 		if Lesson.objects.filter(number = lesson.number).exists():
 			href_lesson = Lesson.objects.get(number = lesson.number)
 			
