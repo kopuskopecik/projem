@@ -52,11 +52,10 @@ class Lesson(models.Model):
 		return reverse('ingilizce:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
 
 	def hreflang_get_absolute_url(self):
-		if self.number < 486:
-			if Dersler.objects.filter(number = self.number).exists():
-				lesson = Dersler.objects.get(number = self.number)
-			
-				return reverse('tur:detail', kwargs={'slug':lesson.slug, 'slug2':lesson.slug2})
+		#if self.number < 486:
+		if Dersler.objects.filter(number = self.number).exists():
+			lesson = Dersler.objects.get(number = self.number)
+			return reverse('tur:detail', kwargs={'slug':lesson.slug, 'slug2':lesson.slug2})
 		return reverse('home')
 	def get_create_url(self):
 		return reverse('ingilizce:create')
