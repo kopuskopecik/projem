@@ -85,7 +85,9 @@ class LessonDetailView(HeaderMixin, DetailView):
         # other_lessons = Lesson.objects.exclude(slug = self.kwargs['slug']).filter(filtre2__contains = "ana").filter(number__gte = self.kwargs['number'])[0:6]
         context["common_lessons"] = common
         return context
-		
+	
+    def get_queryset(self):
+        return Lesson.objects.filter(slug = self.kwargs['slug'], slug2 = self.kwargs['slug2'])		
 
 
 class LessonCreateView(LoginRequiredMixin, HeaderMixin, CreateView):

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{lesson.filtre1}}-{{lesson.headline}} {% endblock %}
+
+{% block metalar %}		
+		<meta name="description" content="{{lesson.filtre1}}-{{lesson.headline}} ile ilgili örnek ve açıklamaları içerir.">
+		<meta name="keywords" content=" Python Dersleri, {{lesson.headline}}">
+{% endblock%}
+
+{% block breadcrumb %}
+<nav aria-label="breadcrumb" class = "breadcrumb-detail">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="{% url 'tur:index' %}">{{baslik.get_ana_başlık_display}}</a></li>
+    <li class="breadcrumb-item"><a href="{{baslik.get_absolute_url}}">{{baslik.baslik_adi}}</a></li>
+	<li class="breadcrumb-item active" aria-current="page">{{lesson.headline}}</li>
+  </ol>
+</nav>
+{% endblock %}
+
+{% block body %}
+<div class = "container-fluid overflow-hidden">
+	<div class = "row">
+		<div class = "col-md-3 pl-0 mt-0 detailmenu liste">
+			<div class="list-group list-group-flush mt-0">
+			  {% for ders in lessons %}
+				<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-info {% if ders.id ==  lesson.id %}active{% endif %}">{{ders.headline}}</a>
+			  {% endfor %}
+			</div>
+		</div>
+		<div class = "col-md-9 content icerik">
+			<h1 class = "text-center text-danger headline">		
+				{{lesson.headline}}				
+			</h1>
+			<div>{{lesson.content|safe}}</div>
+			<div class = "oklar">
+				<p class = "text-right"><a href="{{next_lesson.get_absolute_url}}" class="btn btn-success" role="button">{{next_lesson.headline}} <i class ="fas fa-angle-double-right"></i></a></p>
+				<p class = "text-left"><a href="{{previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><i class ="fas fa-angle-double-left"></i> {{previous_lesson.headline}}</a></p>
+				
+				<p class = "text-center">
+					<a href="{{hreflang}}" class = "btn btn-info btn-sm"><b>for English</b></a>
+					<a href = "#" class="btn btn-primary btn-sm" role="button"> <i class ="fas fa-bookmark"></i> </a>
+					<a href = "#" class="btn btn-warning btn-sm" role="button"> <i class ="fas fa-eye"></i> {{lesson.views}}</a>
+				</p>	
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="{% static 'js/detail/detail.js'%}"></script>
+{% endblock %}

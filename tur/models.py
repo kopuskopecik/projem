@@ -4,8 +4,30 @@ from django.utils.text import slugify
 
 from ckeditor.fields import RichTextField
 
-#from ingilizce.models import Lesson
+BAŞLIKLAR = (
+	('python', 'Python'),
+	('bootstrap4', 'Bootstrap4'),
+	('html', 'HTML'),
+	('css', 'CSS'),
+)
 
+class  Baslik(models.Model):
+	baslik_adi = models.CharField("Üst Başlığın adı", max_length=100)
+	ana_başlık = models.CharField(max_length=30, choices=BAŞLIKLAR, default = "python") 
+	slug = models.SlugField(unique=True, max_length=130)
+	modul_mu = models.BooleanField("Modül mü", default = False)
+	icon_name = models.CharField("Icon ismi", max_length=50, blank = True)
+	sıra = models.PositiveSmallIntegerField(blank= True)
+	
+	def __str__(self):
+		return self.baslik_adi
+	
+	def get_absolute_url(self):
+		return reverse('tur:baslik-index', kwargs={'slug':self.slug},)
+	
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.baslik_adi.replace("ı","i"))		
+		return super(Baslik, self).save(*args, **kwargs)
 
 # Create your models here.
 class Dersler(models.Model):
@@ -15,11 +37,13 @@ class Dersler(models.Model):
 	number = models.PositiveSmallIntegerField()
 	publishing_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now_add=True)
 	updating_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now=True)
+	baslık = models.ForeignKey(Baslik, on_delete=models.CASCADE, verbose_name = "Üst Başlık")
 	filtre1 = models.CharField(max_length=100, default = "-")
 	filtre2 = models.CharField(max_length=100, default = "-")
 	descriptions = models.CharField(max_length=500, default = "Python Dersleri")
 	anahtar = models.CharField(max_length=500, default = "Python Dersleri")
 	slug2 = models.SlugField( max_length=130, default = "python")
+	views = models.PositiveSmallIntegerField(default = 0)
 	
 	def __str__(self):
 		return self.headline
@@ -28,7 +52,7 @@ class Dersler(models.Model):
 		ordering = ['number']
 	
 	def get_absolute_url(self):
-		return reverse('tur:detail', kwargs={'slug':self.slug, 'slug2':self.slug2})
+		return reverse('tur:detail', kwargs={'slug':self.slug, 'slug2':self.baslık.slug})
 		
 	
 	def get_create_url(self):
@@ -43,8 +67,6 @@ class Dersler(models.Model):
 	def get_unique_slug(self):
 		slug = slugify(self.headline.replace("ı","i"))
 		unique_slug = slug
-		slug2 = slugify(self.filtre1.replace("ı","i"))
-		self.slug2 = slug2
 		counter = 1
 		while Dersler.objects.filter(slug=unique_slug).exclude(publishing_date = self.publishing_date).exists():
 			unique_slug = "{}-{}".format(slug, counter)

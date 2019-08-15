@@ -10,3 +10,6 @@ class DerslerForm(forms.ModelForm):
 			'content',
 			'number',			
 			]
+
+class AramaFormu(forms.Form):
+	q = forms.CharField(label = "Ara", max_length=100)
