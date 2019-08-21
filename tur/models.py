@@ -9,15 +9,19 @@ BAŞLIKLAR = (
 	('bootstrap4', 'Bootstrap4'),
 	('html', 'HTML'),
 	('css', 'CSS'),
+	('javascript', 'Javascript'),
 )
 
-class  Baslik(models.Model):
+class Baslik(models.Model):
 	baslik_adi = models.CharField("Üst Başlığın adı", max_length=100)
 	ana_başlık = models.CharField(max_length=30, choices=BAŞLIKLAR, default = "python") 
 	slug = models.SlugField(unique=True, max_length=130)
 	modul_mu = models.BooleanField("Modül mü", default = False)
 	icon_name = models.CharField("Icon ismi", max_length=50, blank = True)
 	sıra = models.PositiveSmallIntegerField(blank= True)
+	aktif = models.BooleanField("Aktif mi", default = False)
+	
+
 	
 	def __str__(self):
 		return self.baslik_adi
@@ -44,6 +48,7 @@ class Dersler(models.Model):
 	anahtar = models.CharField(max_length=500, default = "Python Dersleri")
 	slug2 = models.SlugField( max_length=130, default = "python")
 	views = models.PositiveSmallIntegerField(default = 0)
+	aktif = models.BooleanField("Aktif mi", default = False)
 	
 	def __str__(self):
 		return self.headline
@@ -92,3 +97,23 @@ class Dersler(models.Model):
 			self.set_number()
 		
 		return super(Dersler, self).save(*args, **kwargs)
+	
+	def next_lesson(self):
+		all_lessons = Dersler.objects.filter(aktif = True)
+		all_lessons = list(all_lessons)
+		ranking = all_lessons.index(self)
+		if self == Dersler.objects.last():
+			return all_lessons[0]
+		
+		else:
+			return all_lessons[ranking + 1]
+
+	def previous_lesson(self):
+		all_lessons = Dersler.objects.filter(aktif = True)
+		all_lessons = list(all_lessons)
+		ranking = all_lessons.index(self)
+		if self == Dersler.objects.first():
+			return all_lessons[-1]
+		
+		else:
+			return all_lessons[ranking - 1]

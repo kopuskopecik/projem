@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 	'hakkimizda',
 	'ingilizce',
 	'tur',
+	'front',
 	#3.parti uygulamalar
 	'crispy_forms',
 	'ckeditor',

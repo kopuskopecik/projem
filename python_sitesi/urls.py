@@ -44,5 +44,6 @@ urlpatterns = [
 	path('python/', include('tur.urls')),
 	path('en/python/', include('ingilizce.urls')),
 	path('', include('hakkimizda.urls')),
+	path('', include('front.urls')),
 	
 ]

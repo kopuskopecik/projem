@@ -1,117 +1,157 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
+from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect, HttpResponseRedirect
 from django.views.generic import CreateView, UpdateView, DetailView, ListView, TemplateView
 from django.contrib import messages
 
 from braces.views import LoginRequiredMixin
 
-from .models import Lesson
-from .forms import LessonForm
+from .models import Lesson, Topic
+from .forms import LessonForm, AramaFormu
 
 from hakkimizda.forms import IletisimForm
-from hakkimizda.models import Iletisim
+from hakkimizda.models import Iletisim	
 
-class HeaderMixin():
-# Burası view sınıfları ile ilgili metotları override edeceğimiz yer. Buradan miras inheritance yapan
-# tüm viewlerde aynı durumlar gözlenir.
-	@property
-	def action(self):
-		msg = "{0} is missing action.".format(self.__class__)
-		raise NotImplementedError(msg)
+def home_view(request):
+	basliklar = Topic.objects.filter(modul_mu = True, aktif = True)
+	
+	context = {
+		"basliklar": basliklar,
+	}
+	return render(request,'ingilizce/home.html', context)
+
+def ing_index(request):
+	basliklar = Topic.objects.filter(aktif = True)
+	context = {
+		"basliklar": basliklar,
+	}
+	
+	return render(request, 'ingilizce/index.html', context)
+	
+#def django_index(request):
+#	baslik = get_object_or_404(Topic, sıra = 1)
+#	context = {
+#		"baslik": baslik,
+#	}
+#	
+#	return render(request, 'tur/baslik_index.html', context)
+
+def tkinter_index(request):
+	baslik = get_object_or_404(Topic, sıra = 2)
+	context = {
+		"baslik": baslik,
+	}
+	
+	return render(request, 'ingilizce/baslik_index.html', context)
+
+def modul_index(request):
+	basliklar = get_list_or_404(Topic, modul_mu = True, aktif = True)
+	context = {
+		"basliklar": basliklar,
+	}
+	
+	return render(request, 'ingilizce/modul-index.html', context)
+
+def baslik_index(request, slug):	
+	
+	baslik = get_object_or_404(Topic, slug = slug, aktif = True)
+	
+	context = {
+		"baslik": baslik,
+	}
+	
+	return render(request, 'ingilizce/baslik_index.html', context)
+
+def ing_detail(request, slug, slug2):
+
+			
+	baslik = get_object_or_404(Topic, slug = slug2, aktif = True)
+	lesson = get_object_or_404(Lesson, slug=slug, baslık = baslik, aktif = True)
+	lessons = Lesson.objects.filter(baslık = baslik, aktif = True)
+	
+	session_key = 'viewed_topic_{}'.format(lesson.pk)
+	if not request.session.get(session_key, False):
+		lesson.views += 1
+		lesson.save()
+		request.session[session_key] = True
+	
+	
+	context = {
+		#'hreflang': hreflang,
+		'lesson': lesson,
+		'lessons': lessons,
+		#'next_lesson': next_lesson,
+		#'previous_lesson': previous_lesson,
+		#'other_lessons': other_lessons,
+		'baslik' : baslik,
+	}
+	return render(request,'ingilizce/yeni-detail.html',context)	
+
+def ing_ara(request):
+	
+	form = AramaFormu(request.GET or None)
+	query = request.GET.get('q')
+	if query:
+		query = query.replace("I", "ı").replace("İ", "i").lower()
+		b = Lesson.objects.filter(headline__icontains = query, aktif = True).distinct()
+		if b:
+			context = {
+			'form': form,
+			'b':b,
+			}
+			return render(request, 'ingilizce/form.html', context)
+		else:
+			b = Lesson.objects.filter(content__icontains = query, aktif = True).distinct()
+			if b:
+				context = {
+				'b':b,
+				'form': form,
+				}
+				return render(request, 'ingilizce/form.html', context)
+	context = {
+		'form': form,	
+	}
+	
+	return render(request, 'ingilizce/form.html', context)
+
+
+def ing_create(request):
+	if not request.user.is_superuser:
+		return Http404()
+	son_ders = Lesson.objects.all().last()
+	
+	form = LessonForm(request.POST or None)
+	if form.is_valid():
+		lesson=form.save()
+		messages.success(request, "Yeni Ders Başarılı Bir Şekilde Oluşturuldu.",extra_tags="mesaj-basarili")
+		if lesson.aktif and lesson.baslık.aktif:
+			return HttpResponseRedirect(lesson.get_absolute_url())
+		else:
+			return redirect('ingilizce:create')
+		#return redirect('tur:create')
+	context = {
+		'form':form,
+		'son_ders': son_ders,
+	}
+
+	return render(request, 'tur/form.html',context)
+	
+def ing_update(request, slug, slug2):
+	if not request.user.is_superuser:
+		return Http404()
 		
-	def form_valid(self, form):
-		msg = "Flavor {0}!".format(self.action)
-		messages.info(self.request, msg)
-		return super(HeaderMixin, self).form_valid(form)
-	
-	def get_context_data(self, **kwargs):
-		context = super(HeaderMixin, self).get_context_data(**kwargs)
+	lesson = get_object_or_404(Lesson, slug=slug)
+	form = LessonForm(request.POST or None, instance=lesson)
+	if form.is_valid():
+		lesson = form.save()
+		messages.success(request, "Ders Başarılı Bir Şekilde Değiştirildi.")
+		if lesson.aktif and lesson.baslık.aktif:
+			return HttpResponseRedirect(lesson.get_absolute_url())
+		else:
+			return redirect('ingilizce:create')
 		
-		
-		genel1 = Lesson.objects.general1()
-		genel2 = Lesson.objects.general2()
-		moduller = Lesson.objects.modules()
-		paketler1 = Lesson.objects.packet1()
-		paketler2 = Lesson.objects.packet2()
-		
-		context["genel1"] = genel1
-		context["genel2"] = genel2
-		context["moduller"] = moduller
-		context["paketler1"] = paketler1
-		context["paketler2"] = paketler2
-		
-		return context	
-
-class LessonIndexView(HeaderMixin, ListView):
-	template_name = 'ingilizce/index.html'
-	context_object_name = 'lessons'
-	
-	def get_queryset(self):
-		return Lesson.objects.filter(filtre2__contains = "ana")
-	
-	
-class AnaIndexView(HeaderMixin, ListView):
-	template_name = 'ingilizce/ana_index.html'
-	context_object_name = 'lessons'
-	
-	def get_queryset(self):
-		return get_list_or_404(Lesson, slug2=self.kwargs['slug2'])
-
-class LessonAllIndexView(HeaderMixin, ListView):
-	template_name = 'ingilizce/all_lesson.html'
-	context_object_name = 'lessons'
-	
-	def get_queryset(self):
-		q = self.request.GET.get("q")
-		if q:
-			matching = Lesson.objects.filter(headline__icontains=q)
-			if matching:
-				return matching
-			else:
-				matching = Lesson.objects.filter(content__icontains = q).distinct() 
-				if matching:
-					return matching
-				else:
-					return []
-		return Lesson.objects.all() 
-
-class LessonDetailView(HeaderMixin, DetailView):
-    model = Lesson
-    template_name = 'ingilizce/detail.html'
-	
-    def get_context_data(self, **kwargs):
-        context = super(LessonDetailView, self).get_context_data(**kwargs)
-        
-        common = Lesson.objects.filter(slug2 = self.kwargs['slug2'])
-        # other_lessons = Lesson.objects.exclude(slug = self.kwargs['slug']).filter(filtre2__contains = "ana").filter(number__gte = self.kwargs['number'])[0:6]
-        context["common_lessons"] = common
-        return context
-	
-    def get_queryset(self):
-        return Lesson.objects.filter(slug = self.kwargs['slug'], slug2 = self.kwargs['slug2'])		
-
-
-class LessonCreateView(LoginRequiredMixin, HeaderMixin, CreateView):
-	model = Lesson
-	template_name = 'ingilizce/form.html'
-	action = "created"
-	
-	# Explicitly attach the FlavorForm class
-	form_class = LessonForm
-	
-	
-class LessonUpdateView(LoginRequiredMixin, HeaderMixin, UpdateView):
-	model = Lesson
-	template_name = 'ingilizce/form.html'
-	action = "updated"
-	
-	# Explicitly attach the FlavorForm class
-	form_class = LessonForm
-
-class LessonTemplateView(HeaderMixin, CreateView):
-	model = Iletisim
-	action = "about"
-	template_name = 'ingilizce/about.html'
-	form_class = IletisimForm
+	context = {
+		'form':form,
+	}
+	return render(request, 'tur/form.html',context)
 
 def ing_delete(request, slug, slug2):
 	if not request.user.is_authenticated:

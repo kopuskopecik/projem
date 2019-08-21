@@ -4,7 +4,7 @@
 {% block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active">Python</li>
+    <li class="breadcrumb-item active">{{baslik_adi}}</li>
   </ol>
 </nav>
 {% endblock %}
@@ -14,7 +14,7 @@
 <div class="container">
 <div class = "row justify-content-md-center">
 <div class = "col-md-9">
-	<h1 class = "text-center text-info py-0 mb-0">Python Dersleri</h1>
+	<h1 class = "text-center text-info py-0 mb-0">{{baslik_adi}} Dersleri</h1>
 	<div class="accordion mt-3" id="accordionExample">
 	  {% for baslik in basliklar %}
 		<div class="card">
@@ -30,8 +30,10 @@
 				<div class="card-body">
 					<div class="list-group">
 					  {% for ders in baslik.dersler_set.all %}
+					   {% if ders.aktif %}
 						<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-success">{{ders.headline}}</a>
-  					  {% endfor %}
+  					   {% endif %}
+					  {% endfor %}
 					</div>
 				</div>
 			</div>

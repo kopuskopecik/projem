@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'ingilizce/base.html' %} 
 {% load crispy_forms_tags %}
 
 
@@ -6,10 +6,10 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<form method="POST" novalidate>
+		<div class="col-md-9">
+			<form method="POST">
 				{% csrf_token %}
-				<h1>Ders oluştur <small>Son Dersin Numarası: {{son_ders.number}}</small></h1>
+				<h1>İletişim</h1>
 				{{form|crispy}}
 				{{form.media}}
 				<input class="btn btn-primary" type="submit" value="Gönder">

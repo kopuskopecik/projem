@@ -4,14 +4,14 @@
 {% block title %} {{lesson.filtre1}}-{{lesson.headline}} {% endblock %}
 
 {% block metalar %}		
-		<meta name="description" content="{{lesson.filtre1}}-{{lesson.headline}} ile ilgili örnek ve açıklamaları içerir.">
-		<meta name="keywords" content=" Python Dersleri, {{lesson.headline}}">
+		<meta name="description" content="{{baslik.get_ana_başlık_display}}-{{lesson.headline}} ile ilgili örnek ve açıklamaları içerir.">
+		<meta name="keywords" content=" {{baslik.get_ana_başlık_display}} Dersleri, {{lesson.headline}}">
 {% endblock%}
 
 {% block breadcrumb %}
 <nav aria-label="breadcrumb" class = "breadcrumb-detail">
   <ol class="breadcrumb mb-0">
-    <li class="breadcrumb-item"><a href="{% url 'tur:index' %}">{{baslik.get_ana_başlık_display}}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'front:index' %}">{{baslik.get_ana_başlık_display}}</a></li>
     <li class="breadcrumb-item"><a href="{{baslik.get_absolute_url}}">{{baslik.baslik_adi}}</a></li>
 	<li class="breadcrumb-item active" aria-current="page">{{lesson.headline}}</li>
   </ol>
@@ -30,7 +30,7 @@
 		</div>
 		<div class = "col-md-9 content icerik">
 			<div class = "mt-1">
-				<a href = "{% url 'tur:create' %}" class = "btn btn-success">Ders Ekle</a>
+				<a href = "{% url 'front:create' %}" class = "btn btn-success">Ders Ekle</a>
 				<a href = "{{lesson.get_update_url}}" class = "btn btn-danger">Dersi Güncelle</a>
 			</div>
 			<h1 class = "text-center text-danger headline">		
@@ -42,7 +42,6 @@
 				<p class = "text-left"><a href="{{lesson.previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><i class ="fas fa-angle-double-left"></i> {{lesson.previous_lesson.headline}}</a></p>
 								
 				<p class = "text-center">
-					<a href="{{hreflang}}" class = "btn btn-info btn-sm"><b>for English</b></a>		
 					<button type = "button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title = "Görüntülenme Sayısı"> <i class ="fas fa-eye"></i> {{lesson.views}}</button>
 					<button  type = "button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title = "Güncellenme Tarihi"> <i class ="far fa-calendar"></i> {{lesson.updating_date|date:"d M y"}}</button>
 			

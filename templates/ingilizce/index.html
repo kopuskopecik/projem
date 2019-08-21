@@ -1,25 +1,46 @@
 {% extends 'ingilizce/base.html' %} 
 {% load static %}
-{% block dil %}<link rel="alternate" hreflang="tr" href="https://www.pythonakademi.com/" />{% endblock %}
 
-<!-- Navbar Start -->
+{% block breadcrumb %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active">Python</li>
+  </ol>
+</nav>
+{% endblock %}
 
 {% block body %}
 
-<div class = "container">
-<div class="row">
-	{% for lesson in lessons   %}
-	
-	<div class = "col-md-6 col-sm-12 col-xs-12">
-		<div class = "basliklar {{lesson.filtre1}} {{lesson.filtre2}}">
-			<a href="{{lesson.get_absolute_url}}">
-				<h4 class = " abc text-center">
-				{{lesson.headline}}
-				</h4>
-			</a>
-		</div>		
+<div class="container">
+<div class = "row justify-content-md-center">
+<div class = "col-md-9">
+	<h1 class = "text-center text-info py-0 mb-0">Python Lessons</h1>
+	<div class="accordion mt-3" id="accordionExample">
+	  {% for baslik in basliklar %}
+		<div class="card">
+			<div class="card-header index-arka-plan" id="heading{{baslik.id}}">
+				<h2 class="mb-0">
+				<button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#ders-{{baslik.id}}" aria-expanded="true" aria-controls="collapse{{baslik.id}}">
+					{{baslik.baslik_adi}}
+				</button>
+				</h2>
+			</div>
+
+			<div id="ders-{{baslik.id}}" class="collapse" aria-labelledby="{{baslik.baslik_adi}}" data-parent="#accordionExample">
+				<div class="card-body">
+					<div class="list-group">
+					  {% for ders in baslik.lesson_set.all %}
+					  {% if ders.aktif %}
+						<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-success">{{ders.headline}}</a>
+  					  {% endif %}
+					  {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	  {% endfor %}
 	</div>
-	{%  endfor  %}
-</div>
+</div>		
+</div>		
 </div>
 {% endblock %}

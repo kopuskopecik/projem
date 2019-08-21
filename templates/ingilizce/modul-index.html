@@ -1,11 +1,11 @@
-{% extends 'base.html' %} 
+{% extends 'ingilizce/base.html' %} 
 {% load static %}
 
 {% block breadcrumb %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'home' %}">Anasayfa</a></li>
-	<li class="breadcrumb-item active" aria-current="page">Python Modul ve Paketleri</li>
+    <li class="breadcrumb-item"><a href="{% url 'ingilizce:ing-home' %}">Home</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Python Modules and Packages</li>
   </ol>
 </nav>
 {% endblock %}
@@ -15,7 +15,7 @@
 <div class="container">
 <div class = "row justify-content-md-center">
 <div class = "col-md-9">
-	<h1 class = "text-center text-info py-0 mb-0">Python Modul ve Paketleri</h1>
+	<h1 class = "text-center text-info py-0 mb-0">Python Modules and Packages</h1>
 	<div class="accordion mt-3" id="accordionExample">
 	  {% for baslik in basliklar %}
 		<div class="card">
@@ -30,7 +30,7 @@
 			<div id="ders-{{baslik.id}}" class="collapse" aria-labelledby="{{baslik.baslik_adi}}" data-parent="#accordionExample">
 				<div class="card-body">
 					<div class="list-group">
-					  {% for ders in baslik.dersler_set.all %}
+					  {% for ders in baslik.lesson_set.all %}
 						<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-success">{{ders.headline}}</a>
   					  {% endfor %}
 					</div>

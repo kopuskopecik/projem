@@ -5,12 +5,15 @@ from .models import Dersler, Baslik
 from .forms import DerslerForm, AramaFormu
 from django.contrib import messages
 
-from ingilizce.models import Lesson
+#from ingilizce.models import Lesson
 
 # Create your views here.
-def tur_index(request):
+
+
+def front_index(request):
 	basliklar = Baslik.objects.filter(aktif = True)
 	baslik_adi = basliklar.first().get_ana_başlık_display()
+	
 	context = {
 		"basliklar": basliklar,
 		'baslik_adi': baslik_adi,
@@ -18,29 +21,6 @@ def tur_index(request):
 	
 	return render(request, 'tur/index.html', context)
 
-def django_index(request):
-	baslik = get_object_or_404(Baslik, sıra = 1)
-	context = {
-		"baslik": baslik,
-	}
-	
-	return render(request, 'tur/baslik_index.html', context)
-
-def tkinter_index(request):
-	baslik = get_object_or_404(Baslik, sıra = 2)
-	context = {
-		"baslik": baslik,
-	}
-	
-	return render(request, 'tur/baslik_index.html', context)
-
-def modul_index(request):
-	basliklar = get_list_or_404(Baslik, modul_mu = True, aktif = True)
-	context = {
-		"basliklar": basliklar,
-	}
-	
-	return render(request, 'tur/modul-index.html', context)
 	
 def baslik_index(request, slug):	
 	
@@ -52,7 +32,7 @@ def baslik_index(request, slug):
 	
 	return render(request, 'tur/baslik_index.html', context)
 
-def tur_detail(request, slug, slug2):
+def front_detail(request, slug, slug2):
 
 			
 	baslik = get_object_or_404(Baslik, slug = slug2, aktif = True)
@@ -65,32 +45,9 @@ def tur_detail(request, slug, slug2):
 		lesson.save()
 		request.session[session_key] = True
 	
-	#lessons = Dersler.objects.filter(filtre1 = lesson.filtre1)
-	#other_lessons = Dersler.objects.exclude(slug = slug).filter(filtre2__contains = "ana").filter(number__gte = lesson.number)[0:6]
-	#if lesson== Dersler.objects.last():
-	#	next_lesson = get_object_or_404(Dersler, number=1)
-	#else:
-	#	next_lesson = get_object_or_404(Dersler, number= lesson.number + 1)
-	
-	#if lesson== Dersler.objects.first():
-	#	previous_lesson = get_object_or_404(Dersler, number=Dersler.objects.last().number)
-	#else:
-	#	previous_lesson = get_object_or_404(Dersler, number= lesson.number - 1)
-			
-	if lesson.number <= 572:
-		if Lesson.objects.filter(number = lesson.number).exists():
-			href_lesson = Lesson.objects.get(number = lesson.number)
-			
-			hreflang = reverse('ingilizce:detail', kwargs={'slug':href_lesson.slug, 'slug2':href_lesson.slug2})
-		else:
-			hreflang = reverse('ingilizce:index')
-	
-	else:
-		hreflang = reverse('ingilizce:index')
 	
 	
 	context = {
-		'hreflang': hreflang,
 		'lesson': lesson,
 		'lessons': lessons,
 		#'next_lesson': next_lesson,
@@ -98,9 +55,9 @@ def tur_detail(request, slug, slug2):
 		#'other_lessons': other_lessons,
 		'baslik' : baslik,
 	}
-	return render(request,'tur/yeni-detail.html',context)
+	return render(request,'front/yeni-detail.html',context)
 
-def tur_create(request):
+def front_create(request):
 	if not request.user.is_superuser:
 		return Http404()
 	son_ders = Dersler.objects.all().last()
@@ -121,7 +78,7 @@ def tur_create(request):
 
 	return render(request, 'tur/form.html',context)
 	
-def tur_update(request, slug, slug2):
+def front_update(request, slug, slug2):
 	if not request.user.is_superuser:
 		return Http404()
 		
@@ -140,7 +97,7 @@ def tur_update(request, slug, slug2):
 	}
 	return render(request, 'tur/form.html',context)
 
-def tur_delete(request, slug, slug2):
+def front_delete(request, slug, slug2):
 	if not request.user.is_authenticated:
 		return Http404()
 		
@@ -149,7 +106,7 @@ def tur_delete(request, slug, slug2):
 	lesson.delete_number()
 	return redirect("tur:index")
 	
-def tur_ara(request):
+def front_ara(request):
 	
 	form = AramaFormu(request.GET or None)
 	query = request.GET.get('q')
