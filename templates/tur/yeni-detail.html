@@ -29,10 +29,12 @@
 			</div>
 		</div>
 		<div class = "col-md-9 content icerik">
+		  {% if request.user.is_superuser%}
 			<div class = "mt-1">
 				<a href = "{% url 'tur:create' %}" class = "btn btn-success">Ders Ekle</a>
 				<a href = "{{lesson.get_update_url}}" class = "btn btn-danger">Dersi Güncelle</a>
 			</div>
+		  {% endif %}	
 			<h1 class = "text-center text-danger headline">		
 				{{lesson.headline}}				
 			</h1>
