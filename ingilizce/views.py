@@ -70,7 +70,7 @@ def ing_detail(request, slug, slug2):
 	session_key = 'viewed_topic_{}'.format(lesson.pk)
 	if not request.session.get(session_key, False):
 		lesson.views += 1
-		lesson.save()
+		lesson.save(update_fields = ['views'])
 		request.session[session_key] = True
 	
 	
