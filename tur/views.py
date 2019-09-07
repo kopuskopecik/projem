@@ -59,6 +59,7 @@ def tur_detail(request, slug, slug2):
 	lesson = get_object_or_404(Dersler, slug=slug, baslık = baslik, aktif = True)
 	lessons = Dersler.objects.filter(baslık = baslik, aktif = True)
 	
+	
 	session_key = 'viewed_topic_{}'.format(lesson.pk)
 	if not request.session.get(session_key, False):
 		lesson.views += 1

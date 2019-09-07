@@ -13,6 +13,7 @@ class DerslerForm(forms.ModelForm):
 			'descriptions',
 			'anahtar',
 			'aktif',
+			'updating_date',
 			]
 
 class AramaFormu(forms.Form):

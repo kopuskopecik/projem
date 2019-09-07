@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -32,6 +34,8 @@ class Baslik(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.baslik_adi.replace("ı","i"))		
 		return super(Baslik, self).save(*args, **kwargs)
+	
+	
 
 # Create your models here.
 class Dersler(models.Model):
@@ -40,7 +44,7 @@ class Dersler(models.Model):
 	slug = models.SlugField(unique=True, editable=False, max_length=130)
 	number = models.PositiveSmallIntegerField()
 	publishing_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now_add=True)
-	updating_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now=True)
+	updating_date = models.DateTimeField(verbose_name="güncellenme_tarihi", blank = True, null = True)
 	baslık = models.ForeignKey(Baslik, on_delete=models.CASCADE, verbose_name = "Üst Başlık")
 	filtre1 = models.CharField(max_length=100, default = "-")
 	filtre2 = models.CharField(max_length=100, default = "-")
@@ -117,3 +121,6 @@ class Dersler(models.Model):
 		
 		else:
 			return all_lessons[ranking - 1]
+	
+	def clean(self):
+		self.updating_date = datetime.datetime.now()

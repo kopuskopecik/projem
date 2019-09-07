@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
@@ -44,7 +46,7 @@ class Lesson(models.Model):
 	slug = models.SlugField(unique=True, editable=False, max_length=130)
 	number = models.PositiveSmallIntegerField()
 	publishing_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now_add=True)
-	updating_date = models.DateTimeField(verbose_name="yayımlanma_tarihi",auto_now=True)
+	updating_date = models.DateTimeField(verbose_name="güncelleme_tarihi", null=True, blank = True)
 	baslık = models.ForeignKey(Topic, on_delete=models.CASCADE, verbose_name = "Üst Başlık")
 	filtre1 = models.CharField(max_length=100, default = "-")
 	filtre2 = models.CharField(max_length=100, default = "-")
@@ -137,4 +139,7 @@ class Lesson(models.Model):
 			print(i)
 			i.number = i.number - 1
 			i.save()
+			
+	def clean(self):
+		self.updating_date = datetime.datetime.now()
 		
