@@ -40,11 +40,16 @@
 				<a href = "{{lesson.get_update_url}}" class = "btn btn-danger">Dersi Güncelle</a>
 			</div>
 		  {% endif %}	
+		<article>  
+		  <header>	
 			<h1 class = "text-center text-danger headline">		
 				{{lesson.headline}}				
 			</h1>
-			<div>{{lesson.content|safe}}</div>
-			
+		  </header>
+		   <main>
+				<div>{{lesson.content|safe}}</div>
+		   </main>
+		</article>	
 			<div class = "oklar">
 				<p class = "text-right"><a href="{{lesson.next_lesson.get_absolute_url}}" class="btn btn-success" role="button">{{lesson.next_lesson.headline}} <i class ="fas fa-angle-double-right"></i></a></p>
 				<p class = "text-left"><a href="{{lesson.previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><i class ="fas fa-angle-double-left"></i> {{lesson.previous_lesson.headline}}</a></p>
