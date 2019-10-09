@@ -43,6 +43,7 @@
 				{{lesson.headline}}				
 			</h1>
 			<div>{{lesson.content|safe}}</div>
+			<div class="sharethis-inline-share-buttons"></div>
 			<div class = "oklar">
 				<p class = "text-right"><a href="{{lesson.next_lesson.get_absolute_url}}" class="btn btn-success" role="button">{{lesson.next_lesson.headline}} <i class ="fas fa-angle-double-right"></i></a></p>
 				<p class = "text-left"><a href="{{lesson.previous_lesson.get_absolute_url}}" class="btn btn-success" role="button"><i class ="fas fa-angle-double-left"></i> {{lesson.previous_lesson.headline}}</a></p>
@@ -54,7 +55,7 @@
 			
 				</p>
 				
-				<div class="sharethis-inline-share-buttons"></div>
+				
 				<div class = "reklam mx-auto mt-1">
 				
 					<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
