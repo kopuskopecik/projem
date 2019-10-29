@@ -21,7 +21,7 @@ from django.views.generic import TemplateView
 
 from home.views import home_view
 from home.sitemaps import DerslerSitemap, LessonSitemap
-from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
+from home.sitemaps import StaticViewSitemap, TopicSitemap, BaslikSitemap
 
 
 #handler404 = 'home_view' 
@@ -29,9 +29,10 @@ from home.sitemaps import StaticViewSitemap, StaticDerslerViewSitemap
 handler404 = 'home.views.view_404'
 
 sitemaps = {
-	'static' : StaticDerslerViewSitemap,
+	'static' : StaticViewSitemap,
+	'basliklar': BaslikSitemap,
+	'topics': TopicSitemap,
 	'dersler': DerslerSitemap,
-	'static1' : StaticViewSitemap,
 	'lessons': LessonSitemap,
 }
 

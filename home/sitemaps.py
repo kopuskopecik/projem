@@ -1,8 +1,8 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from tur.models import Dersler
-from ingilizce.models import Lesson
+from tur.models import Dersler, Baslik
+from ingilizce.models import Lesson, Topic
 
 
 
@@ -10,43 +10,49 @@ class DerslerSitemap(Sitemap):
 	protocol = "https"
 
 	def items(self):
-		return Dersler.objects.all()
+		return Dersler.objects.filter(aktif = True)
 		
 	def lastmod(self, obj):
 		return obj.updating_date
 		
+class LessonSitemap(Sitemap):
+	protocol = "https"
 
+	def items(self):
+		return Lesson.objects.filter(aktif = True)
+		
+	def lastmod(self, obj):
+		return obj.updating_date
+
+class TopicSitemap(Sitemap):
+	protocol = "https"
+
+	def items(self):
+		return Topic.objects.filter(aktif = True)
+
+class BaslikSitemap(Sitemap):
+	protocol = "https"
+
+	def items(self):
+		return Baslik.objects.filter(aktif = True)
 
 
 class StaticViewSitemap(Sitemap):
 	protocol = "https"
 	
 	def items(self):
-		return ['hakkimizda:hak', 'tur:index']
+		return [
+			'hakkimizda:hak', 
+			'tur:index', 
+			'tur:django-index', 
+			'tur:tkinter-index',
+			'tur:modul-index',
+			'ingilizce:ing-home',
+			'ingilizce:index',
+			'ingilizce:tkinter-index',
+			'ingilizce:modul-index',
+		]
 	
 	def location(self, item):
 		return reverse(item)
 
-class StaticDerslerViewSitemap(Sitemap):
-	protocol = "https"
-	
-	
-	def items(self):
-		liste = []
-		for i in Dersler.objects.filter(filtre2__contains = "ana"):
-			liste.append(i.slug2)
-		liste = list(set(liste))
-		
-		return liste
-		
-	def location(self, item):
-		return "/python/" + item + "/"
-
-class LessonSitemap(Sitemap):
-	protocol = "https"
-
-	def items(self):
-		return Lesson.objects.all()
-		
-	def lastmod(self, obj):
-		return obj.updating_date
