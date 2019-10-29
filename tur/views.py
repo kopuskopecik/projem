@@ -20,11 +20,13 @@ def tur_index(request):
 
 def django_index(request):
 	baslik = get_object_or_404(Baslik, sıra = 1)
+	baslik1 = get_object_or_404(Baslik, slug = "django-dersleri")
 	context = {
 		"baslik": baslik,
+		"baslik1": baslik1,
 	}
 	
-	return render(request, 'tur/baslik_index.html', context)
+	return render(request, 'tur/django_index.html', context)
 
 def tkinter_index(request):
 	baslik = get_object_or_404(Baslik, sıra = 2)
