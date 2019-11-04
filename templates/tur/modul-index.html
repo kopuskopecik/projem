@@ -37,7 +37,7 @@
 				<div class="card-body">
 					<div class="list-group">
 					  {% for ders in baslik.dersler_set.all %}
-						<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-success">{{ders.headline}}</a>
+						<a href="{{ders.get_absolute_url}}#disqus_thread" class="list-group-item list-group-item-action list-group-item-success">{{ders.headline}}</a>
   					  {% endfor %}
 					</div>
 				</div>

@@ -32,9 +32,9 @@
 			<div class="list-group">
 			{% for ders in baslik.dersler_set.all %}
 			    {% if forloop.counter == 1 %}
-					<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-info">{{ders.headline}} dersine giriş</a>
+					<a href="{{ders.get_absolute_url}}#disqus_thread" class="list-group-item list-group-item-action list-group-item-info">{{ders.headline}} dersine giriş</a>
 				{% else %}
-					<a href="{{ders.get_absolute_url}}" class="list-group-item list-group-item-action list-group-item-info">{{ders.headline}}</a>
+					<a href="{{ders.get_absolute_url}}#disqus_thread" class="list-group-item list-group-item-action list-group-item-info">{{ders.headline}}</a>
 				{% endif %}
 			{% endfor %}
 			</div>
